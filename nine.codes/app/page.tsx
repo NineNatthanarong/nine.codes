@@ -1,39 +1,117 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react';
+import { motion } from "framer-motion";
+import { Instagram, Linkedin, MessageCircle, ExternalLink } from "lucide-react";
+import Link from "next/link";
+
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.3,
+        },
+    },
+};
+
+const item = {
+    hidden: { y: 30, opacity: 0 },
+    show: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 50,
+            damping: 20
+        }
+    },
+} as const;
+
+const links = [
+    {
+        name: "Instagram",
+        handle: "@n_nine.e",
+        url: "https://instagram.com/n_nine.e",
+        icon: Instagram,
+        color: "from-pink-500 via-red-500 to-yellow-500",
+    },
+    {
+        name: "Line",
+        handle: "ninetop",
+        url: "https://line.me/ti/p/~ninetop",
+        icon: MessageCircle,
+        color: "from-green-400 to-green-600",
+    },
+    {
+        name: "LinkedIn",
+        handle: "Natthanarong Tiangjit",
+        url: "https://www.linkedin.com/in/natthanarong-tiangjit/",
+        icon: Linkedin,
+        color: "from-blue-500 to-blue-700",
+    },
+];
 
 export default function Home() {
-  const [time, setTime] = useState('');
+    return (
+        <main className="min-h-screen w-full bg-neutral-950 text-white flex flex-col items-center justify-center p-4 relative overflow-hidden">
+            {/* Background Gradients */}
+            <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] animate-pulse" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse delay-1000" />
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const bangkokTime = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'Asia/Bangkok',
-        hour12: false,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      }).format(now);
-      setTime(bangkokTime);
-    };
+            <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="w-full max-w-md z-10 flex flex-col gap-8"
+            >
+                {/* Header / Profile Section */}
+                <motion.div variants={item} className="text-center space-y-2 mb-8">
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 pb-2">
+                        Natthanarong Tiangjit
+                    </h1>
+                    <p className="text-neutral-400 text-lg font-light tracking-wide">AI Software Developer</p>
+                </motion.div>
 
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
+                {/* Links Section */}
+                <div className="space-y-4">
+                    {links.map((link) => (
+                        <motion.div key={link.name} variants={item}>
+                            <Link
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative flex items-center justify-between p-4 rounded-2xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-all duration-300 hover:bg-neutral-800/50 backdrop-blur-sm overflow-hidden"
+                            >
+                                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 bg-gradient-to-r ${link.color}`} />
 
-    return () => clearInterval(interval);
-  }, []);
+                                <div className="flex items-center gap-4 relative z-10">
+                                    <div className={`p-2 rounded-xl bg-gradient-to-br ${link.color} text-white shadow-lg`}>
+                                        <link.icon size={20} />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <span className="font-medium text-neutral-200 group-hover:text-white transition-colors">
+                                            {link.name}
+                                        </span>
+                                        <span className="text-xs text-neutral-500 group-hover:text-neutral-400 transition-colors">
+                                            {link.handle}
+                                        </span>
+                                    </div>
+                                </div>
 
-  return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center">
-      <div className="text-center w-full">
-          <h1 className="text-6xl font-mono">nine.codes</h1>
-          <br/>
-          <h1 className="text-6xl font-mono">{time}</h1>
-      </div>
-    </div>
-  );
+                                <ExternalLink size={16} className="text-neutral-600 group-hover:text-neutral-400 transition-colors relative z-10" />
+                            </Link>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Footer */}
+                <motion.div variants={item} className="text-center mt-8">
+                    <p className="text-xs text-neutral-600">
+                        © {new Date().getFullYear()} nine.codes
+                    </p>
+                </motion.div>
+            </motion.div>
+        </main>
+    );
 }
