@@ -10,7 +10,7 @@ const container = {
         opacity: 1,
         transition: {
             staggerChildren: 0.1,
-            delayChildren: 0.3,
+            delayChildren: 0.1,
         },
     },
 };
@@ -24,6 +24,30 @@ const item = {
             type: "spring",
             stiffness: 50,
             damping: 20
+        }
+    },
+} as const;
+
+const letterContainer = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.05,
+            delayChildren: 0.1,
+        },
+    },
+} as const;
+
+const letter = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring",
+            stiffness: 50,
+            damping: 15
         }
     },
 } as const;
@@ -67,9 +91,29 @@ export default function Home() {
             >
                 {/* Header / Profile Section */}
                 <motion.div variants={item} className="text-center space-y-2 mb-8">
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 pb-2">
-                        Natthanarong Tiangjit
-                    </h1>
+                    <motion.h1
+                        variants={letterContainer}
+                        initial="hidden"
+                        animate="show"
+                        className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400 pb-2"
+                    >
+                        <div className="flex flex-col items-center">
+                            <div className="flex flex-wrap justify-center">
+                                {Array.from("Natthanarong").map((char, i) => (
+                                    <motion.span key={`first-${i}`} variants={letter} className="inline-block">
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </div>
+                            <div className="flex flex-wrap justify-center">
+                                {Array.from("Tiangjit").map((char, i) => (
+                                    <motion.span key={`last-${i}`} variants={letter} className="inline-block">
+                                        {char}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.h1>
                     <p className="text-neutral-400 text-lg font-light tracking-wide">AI Software Developer</p>
                 </motion.div>
 
