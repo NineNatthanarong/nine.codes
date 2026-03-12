@@ -1,0 +1,37 @@
+# Robots.txt for nine.codes
+# https://nine.codes
+
+User-agent: *
+Allow: /
+
+# Disallow private directories
+Disallow: /api/
+Disallow: /private/
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Sitemap location
+Sitemap: https://nine.codes/sitemap.xml
