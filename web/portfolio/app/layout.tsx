@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/CustomCursor";
 import FloatingParticles from "./components/FloatingParticles";
+import InteractiveBackground from "./components/InteractiveBackground";
 import JsonLd from "./components/JsonLd";
 import AiSearchContent from "./components/AiSearchContent";
 
@@ -122,6 +123,7 @@ export default function RootLayout({
       >
         <JsonLd />
         <AiSearchContent />
+        <InteractiveBackground />
         <CustomCursor />
         <FloatingParticles />
         {children}

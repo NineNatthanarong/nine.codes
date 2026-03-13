@@ -17,8 +17,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "150px" }}
+      transition={{ duration: 0.35, delay: index * 0.06 }}
       className="group relative"
     >
       <TiltCard tiltStrength={8} glareEnabled={true}>

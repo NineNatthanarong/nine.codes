@@ -49,8 +49,8 @@ export default function About() {
 
   return (
     <section id="about" ref={containerRef} className="py-32 relative overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a2e] via-[#252542]/30 to-[#1a1a2e]" />
+      {/* Subtle section overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#252542]/20 to-transparent" />
       
       {/* Animated Background Orbs */}
       <motion.div 

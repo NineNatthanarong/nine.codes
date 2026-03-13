@@ -66,8 +66,10 @@ const highlights = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 relative bg-[#252542]" aria-label="Professional experience and career journey" aria-labelledby="experience-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-24 relative overflow-hidden" aria-label="Professional experience and career journey" aria-labelledby="experience-heading">
+      {/* Subtle section overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#252542]/30 to-transparent" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

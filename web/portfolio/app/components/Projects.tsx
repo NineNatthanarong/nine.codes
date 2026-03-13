@@ -60,8 +60,8 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
     <motion.div
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+      viewport={{ once: true, margin: "200px" }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -13,8 +13,10 @@ export default function ProjectsGrid() {
     : folderProjects.filter(p => p.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-24 relative" aria-label="Projects portfolio showcasing AI, web development, and robotics work">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 relative overflow-hidden" aria-label="Projects portfolio showcasing AI, web development, and robotics work">
+      {/* Subtle section overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1a1a2e]/30 to-transparent" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
