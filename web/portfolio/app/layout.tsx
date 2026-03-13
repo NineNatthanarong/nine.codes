@@ -26,6 +26,15 @@ export const metadata: Metadata = {
     template: "%s | Nine - AI Developer",
   },
   description: "AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University with expertise in Python, AI/ML, and scalable intelligent systems.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/favicon.ico" },
+    ],
+  },
   keywords: [
     "AI Developer",
     "Software Developer",
