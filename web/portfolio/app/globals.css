@@ -44,10 +44,11 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16162a 50%, #0d0d1a 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 ::-webkit-scrollbar {

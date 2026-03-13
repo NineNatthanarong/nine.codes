@@ -17,12 +17,14 @@ const socialLinks = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative bg-[#1a1a2e] overflow-hidden" aria-label="Contact information and social links" aria-labelledby="contact-heading">
+    <section id="contact" className="py-24 relative overflow-hidden" aria-label="Contact information and social links" aria-labelledby="contact-heading">
+      {/* Subtle section overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1a1a2e]/30 to-transparent" />
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#feca57]/10 blob -z-10" />
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#ff6b6b]/10 blob-2 -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
