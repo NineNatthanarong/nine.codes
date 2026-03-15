@@ -66,7 +66,7 @@ export const folderProjects: FolderData[] = [
     folderName: "SuperAISS5",
     title: "Super AI Engineer SS5",
     subtitle: "Outstanding Innovation Award Winner & CAIO",
-    description: "Won national AI award, built RAG Chatbot for SCG IT, and worked as CAIO creating chatbot solutions.",
+    description: "Won national AI award, built RAG Chatbot, and worked as CAIO creating chatbot solutions.",
     category: "Award",
     color: "#9b5de5",
     icon: Award,
@@ -76,7 +76,7 @@ export const folderProjects: FolderData[] = [
       "/images/projects/certificate-b63c53ac-4018-491b-9576-c42553363c17.png",
     ],
     impact: "National Winner & CAIO",
-    handsOn: ["RAG Chatbot", "AI Systems", "Full-Stack Dev", "Enterprise Solutions", "SCG IT", "B2B Sales"],
+    handsOn: ["RAG Chatbot", "AI Systems", "Full-Stack Dev", "Enterprise Solutions", "B2B Sales"],
     stats: [
       { value: "#1", label: "Innovation" },
       { value: "5th", label: "Season" },

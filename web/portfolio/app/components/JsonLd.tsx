@@ -203,7 +203,7 @@ export default function JsonLd() {
         name: "What projects has Natthanarong Tiangjit worked on?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Natthanarong Tiangjit has worked on 15+ projects including: RAG Chatbot for SCG IT, AI-powered smart parking system with PLC, HyperGas AI safety training system, AI/AR Marketplace for handicrafts, Gender Classification NLP system, functions.codes free online tools, and various robotics projects at BU ROBOTSTUDIO. He has experience in industrial automation, enterprise solutions, and AI deployment.",
+          text: "Natthanarong Tiangjit has worked on 15+ projects including: RAG Chatbot, AI-powered smart parking system with PLC, HyperGas AI safety training system, AI/AR Marketplace for handicrafts, Gender Classification NLP system, functions.codes free online tools, and various robotics projects at BU ROBOTSTUDIO. He has experience in industrial automation, enterprise solutions, and AI deployment.",
         },
       },
       {
@@ -231,7 +231,7 @@ export default function JsonLd() {
         item: {
           "@type": "SoftwareApplication",
           name: "Super AI Engineer SS5 - RAG Chatbot",
-          description: "Built RAG Chatbot for SCG IT, won Outstanding Innovation Award at Thailand's 5th National AI Exhibition",
+          description: "Built RAG Chatbot, won Outstanding Innovation Award at Thailand's 5th National AI Exhibition",
           applicationCategory: "AI Application",
           operatingSystem: "Web",
           author: { "@id": "https://nine.codes/#person" },

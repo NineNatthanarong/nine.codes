@@ -25,7 +25,7 @@ const experiences = [
     color: "#9b5de5",
     description: [
       "Won at Thailand's 5th National AI Exhibition",
-      "Built a RAG Chatbot for SCG IT",
+      "Built a RAG Chatbot",
       "Worked as CAIO for RaoChatHub startup",
       "Created chatbot solutions for business clients",
     ],

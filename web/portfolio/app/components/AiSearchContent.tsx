@@ -23,7 +23,7 @@ export default function AiSearchContent() {
       <ul>
         <li>
           <strong>Outstanding Innovation Award Winner</strong> - Super AI Engineer Season 5 
-          (2025), Thailand&apos;s 5th National AI Exhibition. Built a RAG Chatbot for SCG IT 
+          (2025), Thailand&apos;s 5th National AI Exhibition. Built a RAG Chatbot 
           and worked as CAIO for RaoChatHub startup.
         </li>
         <li>
@@ -73,9 +73,9 @@ export default function AiSearchContent() {
       
       <h3>Projects Portfolio</h3>
       <article>
-        <h4>Super AI Engineer Season 5 - RAG Chatbot for SCG IT</h4>
+        <h4>Super AI Engineer Season 5 - RAG Chatbot</h4>
         <p>
-          Built an enterprise RAG (Retrieval-Augmented Generation) chatbot solution for SCG IT 
+          Built an enterprise RAG (Retrieval-Augmented Generation) chatbot solution 
           as part of Thailand&apos;s 5th National AI Exhibition. The project won the Outstanding 
           Innovation Award. Technologies used include Python, LLM, RAG architecture, and 
           enterprise deployment.
