@@ -252,9 +252,9 @@ export default function About() {
                       <item.icon className="w-7 h-7" style={{ color: item.color }} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-3 group-hover:text-[var(--card-color)] transition-colors text-white">
+                      <div className="text-xl font-semibold mb-3 group-hover:text-[var(--card-color)] transition-colors text-white">
                         {item.title}
-                      </h3>
+                      </div>
                       <p className="text-white/50 leading-relaxed">
                         {item.description}
                       </p>

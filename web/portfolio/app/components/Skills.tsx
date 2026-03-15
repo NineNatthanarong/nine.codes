@@ -84,12 +84,12 @@ export default function Skills() {
               style={{ "--group-color": group.color } as React.CSSProperties}
             >
               <div className="text-4xl mb-4">{group.icon}</div>
-              <h3 
+              <div 
                 className="text-lg font-semibold mb-4"
                 style={{ color: group.color }}
               >
                 {group.title}
-              </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span

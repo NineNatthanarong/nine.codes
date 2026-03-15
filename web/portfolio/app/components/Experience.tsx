@@ -125,9 +125,9 @@ export default function Experience() {
                         <exp.icon className="w-6 h-6" style={{ color: exp.color }} />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold group-hover:text-[var(--exp-color)] transition-colors text-white">
+                        <div className="text-lg font-semibold group-hover:text-[var(--exp-color)] transition-colors text-white">
                           {exp.title}
-                        </h3>
+                        </div>
                         <p className="text-sm text-white/50">{exp.company}</p>
                       </div>
                     </div>

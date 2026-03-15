@@ -68,9 +68,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <project.icon className="w-5 h-5" style={{ color: project.color }} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-white group-hover:text-[var(--project-color)] transition-colors">
+              <div className="text-xl font-bold text-white group-hover:text-[var(--project-color)] transition-colors">
                 {project.title}
-              </h3>
+              </div>
               <p className="text-sm text-white/40 mt-1">{project.subtitle}</p>
             </div>
           </div>

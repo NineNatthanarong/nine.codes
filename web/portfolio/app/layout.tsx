@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: "Nine (Natthanarong) | AI Software Developer",
     template: "%s | Nine - AI Developer",
   },
-  description: "Nine (Natthanarong Tiangjit) - AI Software Developer specializing in LLM Optimization, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University.",
+  description: "Nine (Natthanarong Tiangjit) - AI Developer specializing in LLM, Full-Stack Web, and Robotics. Award winner from Bangkok University.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Nine - AI Software Developer Portfolio",
     title: "Nine (Natthanarong) | AI Software Developer",
-    description: "Nine (Natthanarong Tiangjit) - AI Software Developer specializing in LLM Optimization, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University.",
+    description: "Nine (Natthanarong Tiangjit) - AI Developer specializing in LLM, Full-Stack Web, and Robotics. Award winner from Bangkok University.",
     images: [
       {
         url: "/images/og-image.png",
@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     creator: "@nine_codes",
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   category: "technology",
   classification: "Portfolio",

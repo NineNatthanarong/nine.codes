@@ -108,9 +108,9 @@ export default function Gallery() {
                     <span className="text-[#feca57] text-xs font-medium uppercase tracking-wider mb-2">
                       {image.category}
                     </span>
-                    <h3 className="text-white text-xl font-semibold">
+                    <div className="text-white text-xl font-semibold">
                       {image.title}
-                    </h3>
+                    </div>
                   </motion.div>
                 </div>
               </div>
