@@ -80,7 +80,7 @@ export const folderProjects: FolderData[] = [
     stats: [
       { value: "#1", label: "Innovation" },
       { value: "5th", label: "Season" },
-      { value: "SCG", label: "Client" },
+      { value: "Collab", label: "Work" },
     ],
     period: "Oct 2025",
   },
