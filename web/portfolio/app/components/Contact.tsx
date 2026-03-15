@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, FileText, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, FileText, ExternalLink, Share2, Twitter } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
 const contactInfo = [
@@ -13,6 +13,20 @@ const contactInfo = [
 const socialLinks = [
   { icon: Github, label: "GitHub", href: "https://github.com/nine-codes", color: "#ffffff" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/natthanarong", color: "#48dbfb" },
+  { icon: Twitter, label: "Twitter", href: "https://twitter.com/nine_codes", color: "#1da1f2" },
+];
+
+const shareLinks = [
+  { 
+    label: "Twitter", 
+    href: "https://twitter.com/intent/tweet?text=Check%20out%20Nine%27s%20AI%20Developer%20Portfolio&url=https://nine.codes", 
+    color: "#1da1f2" 
+  },
+  { 
+    label: "LinkedIn", 
+    href: "https://www.linkedin.com/sharing/share-offsite/?url=https://nine.codes", 
+    color: "#0077b5" 
+  },
 ];
 
 export default function Contact() {
@@ -96,6 +110,38 @@ export default function Contact() {
                       <social.icon className="w-5 h-5" style={{ color: social.color }} />
                     </MagneticButton>
                   </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Share Links */}
+            <div className="mt-6">
+              <p className="text-sm text-white/50 mb-4 flex items-center gap-2">
+                <Share2 className="w-4 h-4" />
+                Share this portfolio
+              </p>
+              <div className="flex gap-3">
+                {shareLinks.map((share, index) => (
+                  <motion.a
+                    key={share.label}
+                    href={share.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="px-4 py-2 rounded-full text-sm font-medium border transition-all"
+                    style={{ 
+                      borderColor: `${share.color}40`,
+                      color: share.color,
+                      backgroundColor: `${share.color}10`
+                    }}
+                  >
+                    {share.label}
+                  </motion.a>
                 ))}
               </div>
             </div>

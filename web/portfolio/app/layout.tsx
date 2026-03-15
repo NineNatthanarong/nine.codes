@@ -22,10 +22,10 @@ const siteUrl = "https://nine.codes";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Natthanarong (Nine) ณัฏฐณรงค์ เที่ยงจิตต์ ไนน์ | AI Software Developer",
-    template: "%s | Nine (ณัฏฐณรงค์) - AI Developer",
+    default: "Nine (Natthanarong) | AI Software Developer",
+    template: "%s | Nine - AI Developer",
   },
-  description: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์). AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University with expertise in Python, AI/ML, and scalable intelligent systems.",
+  description: "Nine (Natthanarong Tiangjit) - AI Software Developer specializing in LLM Optimization, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -74,9 +74,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: "th_TH",
     url: siteUrl,
-    siteName: "Nine (ณัฏฐณรงค์) - AI Software Developer Portfolio",
-    title: "Natthanarong (Nine) ณัฏฐณรงค์ เที่ยงจิตต์ ไนน์ | AI Software Developer",
-    description: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์). AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University.",
+    siteName: "Nine - AI Software Developer Portfolio",
+    title: "Nine (Natthanarong) | AI Software Developer",
+    description: "Nine (Natthanarong Tiangjit) - AI Software Developer specializing in LLM Optimization, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University.",
     images: [
       {
         url: "/images/og-image.png",
@@ -88,8 +88,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Natthanarong (Nine) ณัฏฐณรงค์ เที่ยงจิตต์ ไนน์ | AI Software Developer",
-    description: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์). AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics.",
+    title: "Nine (Natthanarong) | AI Software Developer",
+    description: "Nine (Natthanarong Tiangjit) - AI Software Developer specializing in LLM Optimization, Full-Stack Web Development, and Robotics.",
     images: ["/images/og-image.png"],
     creator: "@nine_codes",
   },

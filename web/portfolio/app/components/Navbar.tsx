@@ -5,8 +5,9 @@ import { Menu, X, Terminal, Sparkles, Zap } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 const navItems = [
-  { name: "Projects", href: "#projects", icon: Terminal },
-  { name: "Experience", href: "#experience", icon: Zap },
+  { name: "About", href: "#about", icon: Terminal },
+  { name: "Projects", href: "#projects", icon: Zap },
+  { name: "Experience", href: "#experience", icon: Sparkles },
   { name: "Contact", href: "#contact", icon: Sparkles },
 ];
 

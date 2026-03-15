@@ -138,7 +138,7 @@ export default function ImpactHero() {
               transition={{ delay: 0.1, duration: 0.4 }}
               className="text-lg sm:text-xl text-white/80 mb-4 font-medium"
             >
-              Natthanarong Tiangjit | Bangkok University
+              <a href="#about" className="hover:text-[#ff6b6b] transition-colors">Natthanarong Tiangjit</a> | <a href="#experience" className="hover:text-[#ff6b6b] transition-colors">Bangkok University</a>
             </motion.p>
 
             {/* Subheadline */}
@@ -148,7 +148,7 @@ export default function ImpactHero() {
               transition={{ delay: 0.12, duration: 0.4 }}
               className="text-base sm:text-lg text-white/50 mb-6 sm:mb-8 max-w-lg"
             >
-              Full-Stack Web & AI Developer with hands-on expertise in building and deploying 
+              <a href="#projects" className="hover:text-[#ff6b6b] transition-colors">Full-Stack Web</a> & <a href="#projects" className="hover:text-[#ff6b6b] transition-colors">AI Developer</a> with hands-on expertise in building and deploying 
               scalable, intelligent systems. From front-end to back-end and cloud deployment.
             </motion.p>
 
