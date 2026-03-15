@@ -4,17 +4,17 @@ export default function JsonLd() {
     "@type": "Person",
     "@id": "https://nine.codes/#person",
     name: "Natthanarong Tiangjit",
-    alternateName: ["Nine", "Natthanarong Tiangjit", "Nine Natthanarong"],
+    alternateName: ["Nine", "Natthanarong Tiangjit", "Nine Natthanarong", "ณัฏฐณรงค์ เที่ยงจิตต์", "ไนน์"],
     givenName: "Natthanarong",
     familyName: "Tiangjit",
     url: "https://nine.codes",
     image: {
       "@type": "ImageObject",
       url: "https://nine.codes/images/photo-profile.jpg",
-      caption: "Natthanarong Tiangjit (Nine) - AI Software Developer",
+      caption: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์ - Nine) - AI Software Developer",
     },
     jobTitle: "AI Software Developer",
-    description: "AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University with expertise in Python, AI/ML, and scalable intelligent systems. Winner of Outstanding Innovation Award at Super AI Engineer Season 5.",
+    description: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์). AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics. Award-winning innovator from Bangkok University with expertise in Python, AI/ML, and scalable intelligent systems. Winner of Outstanding Innovation Award at Super AI Engineer Season 5.",
     worksFor: {
       "@type": "Organization",
       "@id": "https://nine.codes/#organization-burobotstudio",
@@ -101,19 +101,19 @@ export default function JsonLd() {
       "@type": "WebPage",
       "@id": "https://nine.codes",
     },
-    disambiguatingDescription: "Thai AI software developer and robotics engineer, winner of Super AI Engineer Season 5 Outstanding Innovation Award, Head of Operations at BU ROBOTSTUDIO",
+    disambiguatingDescription: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์ - Nine ไนน์). Thai AI software developer and robotics engineer, winner of Super AI Engineer Season 5 Outstanding Innovation Award, Head of Operations at BU ROBOTSTUDIO",
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Nine - AI Software Developer Portfolio",
+    name: "Nine (ณัฏฐณรงค์) - AI Software Developer Portfolio",
     url: "https://nine.codes",
     author: {
       "@type": "Person",
-      name: "Natthanarong Tiangjit",
+      name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์)",
     },
-    description: "AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics.",
+    description: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์). AI Software Developer specializing in LLM Optimizations, Full-Stack Web Development, and Robotics.",
     inLanguage: ["en", "th"],
     potentialAction: {
       "@type": "SearchAction",
@@ -160,10 +160,10 @@ export default function JsonLd() {
     mainEntity: [
       {
         "@type": "Question",
-        name: "Who is Natthanarong Tiangjit (Nine)?",
+        name: "Who is Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์)?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Natthanarong Tiangjit, also known as Nine, is an AI Software Developer from Bangkok, Thailand. He is a third-year AI Engineering student at Bangkok University on a full Tech Talent scholarship. He specializes in LLM Optimizations, Full-Stack Web Development, and Robotics. He won the Outstanding Innovation Award at Super AI Engineer Season 5 and serves as Head of Operations at BU ROBOTSTUDIO.",
+          text: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์), is an AI Software Developer from Bangkok, Thailand. He is a third-year AI Engineering student at Bangkok University on a full Tech Talent scholarship. He specializes in LLM Optimizations, Full-Stack Web Development, and Robotics. He won the Outstanding Innovation Award at Super AI Engineer Season 5 and serves as Head of Operations at BU ROBOTSTUDIO.",
         },
       },
       {
