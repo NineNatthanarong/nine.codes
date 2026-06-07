@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://nine.codes</loc>
-    <lastmod>2025-03-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://nine.codes/</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nine.codes/images/photo-profile.jpg</image:loc>
+      <image:title>Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer</image:title>
+      <image:caption>Natthanarong Tiangjit, also known as Nine, AI Software Developer in Bangkok, Thailand</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://nine.codes/#about</loc>
-    <lastmod>2025-03-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://nine.codes/#projects</loc>
-    <lastmod>2025-03-13</lastmod>
+    <loc>https://nine.codes/#work</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://nine.codes/#about</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nine.codes/#expertise</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nine.codes/#experience</loc>
-    <lastmod>2025-03-13</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nine.codes/#contact</loc>
-    <lastmod>2025-03-13</lastmod>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

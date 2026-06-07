@@ -4,7 +4,16 @@ export default function JsonLd() {
     "@type": "Person",
     "@id": "https://nine.codes/#person",
     name: "Natthanarong Tiangjit",
-    alternateName: ["Nine", "Natthanarong Tiangjit", "Nine Natthanarong", "ณัฏฐณรงค์ เที่ยงจิตต์", "ไนน์"],
+    alternateName: [
+      "Nine",
+      "Natthanarong",
+      "Nine Natthanarong",
+      "Natthanarong Tiangjit",
+      "ณัฏฐณรงค์",
+      "ณัฏฐณรงค์ เที่ยงจิตต์",
+      "ไนน์",
+      "ไนน์ ณัฏฐณรงค์",
+    ],
     givenName: "Natthanarong",
     familyName: "Tiangjit",
     url: "https://nine.codes",
@@ -57,6 +66,8 @@ export default function JsonLd() {
     sameAs: [
       "https://github.com/nine-codes",
       "https://linkedin.com/in/natthanarong",
+      "https://www.instagram.com/n_nine.e",
+      "https://nine.codes",
     ],
     email: "natthanarong.tian@gmail.com",
     telephone: "+66917853400",
@@ -120,6 +131,18 @@ export default function JsonLd() {
       target: "https://nine.codes/?search={search_term_string}",
       "query-input": "required name=search_term_string",
     },
+  };
+
+  const profilePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateCreated: "2024-01-01",
+    dateModified: "2026-06-07",
+    mainEntity: { "@id": "https://nine.codes/#person" },
+    about: { "@id": "https://nine.codes/#person" },
+    name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — Nine (ไนน์)",
+    url: "https://nine.codes",
+    inLanguage: ["en", "th"],
   };
 
   const breadcrumbSchema = {
@@ -286,6 +309,10 @@ export default function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
       <script
         type="application/ld+json"

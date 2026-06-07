@@ -1,37 +1,112 @@
 # Robots.txt for nine.codes
-# https://nine.codes
+# Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — Nine (ไนน์)
+# AI Software Developer — https://nine.codes
 
+# ---- Default: allow everyone ----
 User-agent: *
 Allow: /
 
-# Disallow private directories
-Disallow: /api/
-Disallow: /private/
-
-# Specific bots
+# ---- Search engines ----
 User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ---- AI assistants & answer engines (explicitly allowed) ----
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: Claude-Web
 Allow: /
 
-User-agent: Anthropic-AI
+User-agent: Claude-User
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft / Bing AI
+User-agent: Bingbot-Extended
+Allow: /
+
+# Others
 User-agent: Amazonbot
 Allow: /
 
-# Sitemap location
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# ---- Sitemap ----
 Sitemap: https://nine.codes/sitemap.xml
