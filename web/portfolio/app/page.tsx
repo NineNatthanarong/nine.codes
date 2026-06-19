@@ -6,7 +6,27 @@ type CSSVars = React.CSSProperties & Record<string, string | number>;
 export default function Home() {
   return (
     <>
-      <div className="spotlight" id="spotlight" />
+      {/* ============ INTRO CURTAIN ============ */}
+      <div className="curtain" id="curtain">
+        <div className="curtain-inner">
+          <span className="monogram">N</span>
+          <span className="curtain-word">nine.codes</span>
+          <span className="curtain-rule" />
+        </div>
+      </div>
+
+      {/* ambient lamplight + reading progress */}
+      <div className="lamp" id="lamp" />
+      <div className="progress" id="progress" />
+
+      {/* ============ CHAPTER RAIL ============ */}
+      <nav className="rail" id="rail" aria-label="Chapters">
+        <a href="#work" data-to="work"><span className="rn">I</span><span className="rl">Work</span></a>
+        <a href="#about" data-to="about"><span className="rn">II</span><span className="rl">About</span></a>
+        <a href="#expertise" data-to="expertise"><span className="rn">III</span><span className="rl">Stack</span></a>
+        <a href="#experience" data-to="experience"><span className="rn">IV</span><span className="rl">Path</span></a>
+        <a href="#contact" data-to="contact"><span className="rn">V</span><span className="rl">Contact</span></a>
+      </nav>
 
       {/* ============ NAV ============ */}
       <nav id="nav">
@@ -32,71 +52,38 @@ export default function Home() {
         {/* ============ HERO ============ */}
         <header className="hero" data-screen-label="Hero">
           <div className="hero-orb" />
-          {/* parallax + 3D depth tokens */}
+          {/* quiet editorial ornaments — engraved rings + serif glyphs */}
           <div className="depth-stage" id="depthStage">
             <span
               className="shape ring c px"
-              style={{ width: "340px", height: "340px", right: "5%", top: "13%", "--o": ".55", "--pz": "-160px" } as CSSVars}
+              style={{ width: "360px", height: "360px", right: "4%", top: "12%", "--o": ".5" } as CSSVars}
               data-px-y=".06"
-              data-px-mx="70"
-              data-px-my="50"
             />
             <span
               className="shape ring v px"
-              style={{ width: "120px", height: "120px", left: "3%", top: "60%", "--o": ".5", "--pz": "120px" } as CSSVars}
-              data-px-y=".13"
-              data-px-mx="-55"
-              data-px-my="42"
-            />
-            <span
-              className="shape dotgrid px"
-              style={{ right: "7%", bottom: "11%", "--o": ".45", "--pz": "-90px" } as CSSVars}
-              data-px-y=".1"
-              data-px-mx="44"
-              data-px-my="-32"
-            />
-            <span
-              className="shape plus px"
-              style={{ left: "39%", top: "29%", "--o": ".85", "--pz": "180px" } as CSSVars}
-              data-px-y=".26"
-              data-px-mx="-72"
-              data-px-my="52"
+              style={{ width: "130px", height: "130px", left: "3%", top: "58%", "--o": ".45" } as CSSVars}
+              data-px-y=".12"
             />
             <span
               className="float neon-c px"
-              style={{ left: "7%", top: "23%", fontSize: "32px", "--o": ".7", "--pz": "200px" } as CSSVars}
-              data-px-y=".18"
-              data-px-mx="-92"
-              data-px-my="62"
+              style={{ left: "6%", top: "20%", fontSize: "92px", lineHeight: 1, "--o": ".55" } as CSSVars}
+              data-px-y=".16"
             >
-              &lt;/&gt;
+              &amp;
             </span>
             <span
               className="float neon-v px"
-              style={{ right: "13%", top: "63%", fontSize: "36px", "--o": ".7", "--pz": "150px" } as CSSVars}
-              data-px-y=".15"
-              data-px-mx="82"
-              data-px-my="-52"
+              style={{ right: "12%", top: "62%", fontSize: "60px", lineHeight: 1, "--o": ".5" } as CSSVars}
+              data-px-y=".14"
             >
-              {"{ }"}
+              ❧
             </span>
             <span
               className="float px"
-              style={{ right: "29%", top: "17%", fontSize: "14px", letterSpacing: ".32em", "--o": ".4", "--pz": "-60px" } as CSSVars}
-              data-px-y=".22"
-              data-px-mx="-60"
-              data-px-my="40"
-            >
-              01001010
-            </span>
-            <span
-              className="float px"
-              style={{ left: "45%", top: "80%", fontSize: "14px", "--o": ".5", "--pz": "90px" } as CSSVars}
+              style={{ right: "30%", top: "18%", fontSize: "30px", fontStyle: "italic", "--o": ".4" } as CSSVars}
               data-px-y=".2"
-              data-px-mx="52"
-              data-px-my="-30"
             >
-              def&nbsp;build():
+              ✦
             </span>
           </div>
           <div className="wrap">
@@ -133,10 +120,10 @@ export default function Home() {
                 <i>★</i> Outstanding Innovation Award — Super AI SS5
               </div>
               <div className="hbadge">
-                <i>⬡</i> Head of Operations — BU ROBOTSTUDIO
+                <i>❦</i> Head of Operations — BU ROBOTSTUDIO
               </div>
               <div className="hbadge">
-                <i>%</i> Tech Talent 100% Scholarship
+                <i>✦</i> Tech Talent 100% Scholarship
               </div>
             </div>
           </div>
@@ -163,11 +150,12 @@ export default function Home() {
           <span className="ghostword px" style={{ right: "-3%", top: "4%", fontSize: "clamp(7rem,17vw,16rem)" }} data-px-y=".12" data-px-mx="38">
             WORK
           </span>
-          <span className="float neon-v px" style={{ left: "5%", top: "40%", fontSize: "24px", "--o": ".5" } as CSSVars} data-px-y=".16" data-px-mx="-50" data-px-my="34">
-            [ ]
+          <span className="float neon-v px" style={{ left: "5%", top: "40%", fontSize: "44px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".16">
+            ❧
           </span>
           <div className="wrap">
             <div className="section-head reveal-up">
+              <div className="chapter-mark"><span className="rn">I</span><span className="rn-line" /></div>
               <span className="kicker">The Work</span>
               <h2 className="section-title">
                 Made to<br />
@@ -354,6 +342,7 @@ export default function Home() {
           <span className="shape ring c px" style={{ width: "160px", height: "160px", right: "4%", top: "18%", "--o": ".4" } as CSSVars} data-px-y=".14" data-px-mx="46" data-px-my="-30" />
           <div className="wrap">
             <div className="section-head reveal-up">
+              <div className="chapter-mark"><span className="rn">II</span><span className="rn-line" /></div>
               <span className="kicker">A little about me</span>
               <h2 className="section-title">
                 More than <span className="g">just code.</span>
@@ -390,11 +379,12 @@ export default function Home() {
           <span className="ghostword px" style={{ right: "-3%", top: "6%", fontSize: "clamp(6rem,15vw,14rem)" }} data-px-y=".11" data-px-mx="36">
             STACK
           </span>
-          <span className="float neon-c px" style={{ left: "5%", top: "26%", fontSize: "24px", "--o": ".5" } as CSSVars} data-px-y=".17" data-px-mx="-48" data-px-my="32">
-            &lt;/&gt;
+          <span className="float neon-c px" style={{ left: "5%", top: "26%", fontSize: "64px", "--o": ".4" } as CSSVars} data-px-y=".17">
+            &amp;
           </span>
           <div className="wrap">
             <div className="section-head reveal-up">
+              <div className="chapter-mark"><span className="rn">III</span><span className="rn-line" /></div>
               <span className="kicker">What I work with</span>
               <h2 className="section-title">
                 A toolkit built<br />
@@ -449,11 +439,12 @@ export default function Home() {
           <span className="ghostword px" style={{ right: "-2%", bottom: "6%", fontSize: "clamp(6rem,15vw,14rem)" }} data-px-y=".12" data-px-mx="36">
             GROW
           </span>
-          <span className="float neon-c px" style={{ right: "8%", top: "22%", fontSize: "22px", "--o": ".5" } as CSSVars} data-px-y=".18" data-px-mx="44" data-px-my="-28">
-            → ∞
+          <span className="float neon-c px" style={{ right: "8%", top: "22%", fontSize: "56px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".18">
+            ❦
           </span>
           <div className="wrap">
             <div className="section-head reveal-up">
+              <div className="chapter-mark"><span className="rn">IV</span><span className="rn-line" /></div>
               <span className="kicker">The journey so far</span>
               <h2 className="section-title">
                 Every step <span className="g">led here.</span>
@@ -511,6 +502,7 @@ export default function Home() {
         <section className="block contact" id="contact" data-screen-label="Contact">
           <div className="wrap">
             <div className="contact-inner reveal-up">
+              <div className="chapter-mark" style={{ justifyContent: "center" }}><span className="rn-line" /><span className="rn">V</span><span className="rn-line" /></div>
               <span className="kicker" style={{ justifyContent: "center" }}>Say hello</span>
               <h2>
                 Let&apos;s make<br />
