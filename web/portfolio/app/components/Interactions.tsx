@@ -58,17 +58,34 @@ export default function Interactions() {
       }
     }
 
-    /* ---------- Lamplight cursor ---------- */
+    /* ---------- Lamplight cursor + invisible-ink reveal ---------- */
     const lamp = document.getElementById("lamp");
+    const revealLayer = document.getElementById("revealLayer");
+    const heroEl = document.querySelector<HTMLElement>(".hero");
+    const lampHint = document.getElementById("lampHint");
     if (lamp) {
       if (fine && !reduce) {
-        let tx = -300, ty = -300, lx = -300, ly = -300, lampRaf = 0;
-        const onMove = (e: MouseEvent) => { tx = e.clientX; ty = e.clientY; };
+        let tx = -300, ty = -300, lx = -300, ly = -300, lampRaf = 0, lit = false;
+        const onMove = (e: MouseEvent) => {
+          tx = e.clientX; ty = e.clientY;
+          if (!lit) {
+            lit = true;
+            revealLayer?.classList.add("lit");
+            revealLayer?.style.setProperty("--lr", "210px");
+            lampHint?.classList.add("gone");
+          }
+        };
         window.addEventListener("mousemove", onMove, { passive: true });
         const animLamp = () => {
           lx += (tx - lx) * 0.1;
           ly += (ty - ly) * 0.1;
           lamp.style.transform = `translate(${lx}px, ${ly}px)`;
+          // reveal mask follows the lamp, mapped into the hero's local box
+          if (revealLayer && heroEl) {
+            const r = heroEl.getBoundingClientRect();
+            revealLayer.style.setProperty("--mx", (lx - r.left).toFixed(1) + "px");
+            revealLayer.style.setProperty("--my", (ly - r.top).toFixed(1) + "px");
+          }
           lampRaf = raf(animLamp);
         };
         lampRaf = raf(animLamp);
@@ -228,6 +245,12 @@ export default function Interactions() {
           .forEach((el) => tagged.push({ el, sy: 0.04 }));
       }
 
+      // Darkroom "develop": project photos emerge from a dark, blurred,
+      // sepia latent image to full focus as they cross the viewport centre.
+      const devList = [
+        ...document.querySelectorAll<HTMLImageElement>(".card-media img"),
+      ].map((img) => ({ img, card: img.closest(".card") as HTMLElement }));
+
       const visible = new Set<Element>();
       const vio = new IntersectionObserver(
         (entries) => {
@@ -244,13 +267,24 @@ export default function Interactions() {
 
       let frameRaf = 0;
       const frame = () => {
-        const center = window.innerHeight / 2;
+        const vh = window.innerHeight;
+        const center = vh / 2;
         for (const t of tagged) {
           if (t.sy && visible.has(t.el)) {
             const r = t.el.getBoundingClientRect();
             const ty = (center - (r.top + r.height / 2)) * t.sy;
             t.el.style.setProperty("--py", ty.toFixed(2) + "px");
           }
+        }
+        for (const d of devList) {
+          const r = d.card.getBoundingClientRect();
+          if (r.bottom < -120 || r.top > vh + 120) continue;
+          let p = 1 - Math.abs(r.top + r.height / 2 - center) / (vh * 0.62);
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          d.img.style.filter =
+            `sepia(${(0.5 - 0.4 * p).toFixed(3)}) saturate(${(0.55 + 0.45 * p).toFixed(3)}) ` +
+            `brightness(${(0.5 + 0.34 * p).toFixed(3)}) contrast(${(1.22 - 0.2 * p).toFixed(3)}) ` +
+            `blur(${((1 - p) * 3).toFixed(2)}px)`;
         }
         frameRaf = raf(frame);
       };

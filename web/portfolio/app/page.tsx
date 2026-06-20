@@ -52,6 +52,62 @@ export default function Home() {
         {/* ============ HERO ============ */}
         <header className="hero" data-screen-label="Hero">
           <div className="hero-orb" />
+
+          {/* ===== Invisible-ink layer — only revealed inside the lamplight ===== */}
+          <svg className="reveal-layer" id="revealLayer" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            {/* astrolabe dial */}
+            <g>
+              <circle className="dial" cx="1150" cy="420" r="250" />
+              <circle className="dial-faint" cx="1150" cy="420" r="200" strokeDasharray="2 9" />
+              <circle className="dial" cx="1150" cy="420" r="120" />
+              <circle className="dial-faint" cx="1150" cy="420" r="60" />
+              <line className="dial-faint" x1="880" y1="420" x2="1420" y2="420" />
+              <line className="dial-faint" x1="1150" y1="150" x2="1150" y2="690" />
+              <line className="tick" x1="1150" y1="170" x2="1150" y2="186" />
+              <line className="tick" x1="1150" y1="654" x2="1150" y2="670" />
+              <line className="tick" x1="900" y1="420" x2="916" y2="420" />
+              <line className="tick" x1="1384" y1="420" x2="1400" y2="420" />
+              <line className="tick" x1="973" y1="243" x2="984" y2="254" />
+              <line className="tick" x1="1327" y1="243" x2="1316" y2="254" />
+              <line className="tick" x1="973" y1="597" x2="984" y2="586" />
+              <line className="tick" x1="1327" y1="597" x2="1316" y2="586" />
+              <circle className="node" cx="1150" cy="420" r="3" />
+            </g>
+            {/* constellation */}
+            <g>
+              <polyline className="const" points="120,150 250,96 360,180 520,120 470,250 600,300" />
+              <circle className="node" cx="120" cy="150" r="2.5" />
+              <circle className="node" cx="250" cy="96" r="3" />
+              <circle className="node" cx="360" cy="180" r="2" />
+              <circle className="node" cx="520" cy="120" r="3" />
+              <circle className="node" cx="470" cy="250" r="2.5" />
+              <circle className="node" cx="600" cy="300" r="2" />
+            </g>
+            {/* circuit + robot-arm schematic */}
+            <g>
+              <path className="wire" d="M250 700 H420 V628 H520 V690 H640" />
+              <path className="wire" d="M520 628 V560 H470" />
+              <circle className="node-o" cx="250" cy="700" r="6" />
+              <circle className="node" cx="420" cy="628" r="3" />
+              <circle className="node-o" cx="640" cy="690" r="6" />
+              <rect className="wire" x="690" y="664" width="54" height="34" rx="3" />
+              <line className="wire" x1="300" y1="500" x2="360" y2="440" />
+              <line className="wire" x1="360" y1="440" x2="450" y2="470" />
+              <line className="wire" x1="450" y1="470" x2="500" y2="410" />
+              <circle className="node" cx="300" cy="500" r="4" />
+              <circle className="node-o" cx="360" cy="440" r="5" />
+              <circle className="node-o" cx="450" cy="470" r="5" />
+              <circle className="node" cx="500" cy="410" r="3" />
+            </g>
+            {/* margin notes, in invisible ink */}
+            <text x="86" y="120" fontSize="15">fig. I — curiosity</text>
+            <text x="980" y="726" fontSize="14">13.7563° N, 100.5018° E</text>
+            <text x="300" y="560" fontSize="14">def build( ):</text>
+            <text x="560" y="360" fontSize="14">{"{ intelligence · craft }"}</text>
+            <text className="mono" x="690" y="170" fontSize="12">01001010</text>
+            <text className="mono" x="1010" y="300" fontSize="13">∿ signal</text>
+          </svg>
+
           {/* quiet editorial ornaments — engraved rings + serif glyphs */}
           <div className="depth-stage" id="depthStage">
             <span
@@ -115,6 +171,7 @@ export default function Home() {
                 Say hello
               </a>
             </div>
+            <p className="lamp-hint" id="lampHint">Move your cursor — some things only show by lamplight.</p>
             <div className="hero-badges reveal-up" data-delay="4">
               <div className="hbadge">
                 <i>★</i> Outstanding Innovation Award — Super AI SS5

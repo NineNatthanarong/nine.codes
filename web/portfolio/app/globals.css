@@ -117,6 +117,44 @@ img { display: block; max-width: 100%; }
   mix-blend-mode: screen;
 }
 
+/* ---------- Lamplight reveal: "invisible ink" only seen by your light ---------- */
+.reveal-layer {
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  -webkit-mask-image: radial-gradient(220px 220px at var(--mx, 50%) var(--my, 42%), #000 0%, #000 48%, transparent 78%);
+          mask-image: radial-gradient(220px 220px at var(--mx, 50%) var(--my, 42%), #000 0%, #000 48%, transparent 78%);
+}
+.reveal-layer.lit { opacity: 1; }
+.reveal-layer .dial { stroke: var(--gold); fill: none; stroke-width: 1.15; opacity: 0.92; }
+.reveal-layer .dial-faint { stroke: var(--gold); fill: none; stroke-width: 1; opacity: 0.55; }
+.reveal-layer .tick { stroke: var(--gold); stroke-width: 1.2; opacity: 0.85; }
+.reveal-layer .wire { stroke: var(--gold); fill: none; stroke-width: 1.1; opacity: 0.7; }
+.reveal-layer .node { fill: var(--gold); opacity: 1; }
+.reveal-layer .node-o { stroke: var(--gold); fill: none; stroke-width: 1.1; opacity: 0.75; }
+.reveal-layer .const { stroke: var(--ink); fill: none; stroke-width: 1; opacity: 0.5; }
+.reveal-layer text { fill: var(--gold); font-family: var(--label); font-style: italic; opacity: 1; }
+.reveal-layer .mono { fill: var(--ink); font-family: var(--label); letter-spacing: 0.3em; opacity: 0.62; font-style: normal; }
+
+.lamp-hint {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-bottom: 30px;
+  font-family: var(--label); font-style: italic;
+  font-size: 13px; letter-spacing: 0.02em;
+  color: var(--faint);
+  transition: opacity 0.6s ease;
+}
+.lamp-hint::before { content: "✦"; color: var(--gold); font-style: normal; }
+.lamp-hint.gone { opacity: 0; }
+
+@media (hover: none), (pointer: coarse), (max-width: 760px) {
+  .reveal-layer, .lamp-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-layer, .lamp-hint { display: none; }
+}
+
 /* ---------- Reading progress (gilded thread) ---------- */
 .progress {
   position: fixed;
@@ -575,10 +613,10 @@ h2.section-title .g {
   filter: sepia(0.22) saturate(0.85) brightness(0.62) contrast(1.04);
   transform: translate3d(0, var(--py, 0px), 0);
   scale: 1.04;
-  will-change: transform, scale;
-  transition: scale 0.7s var(--ease), filter 0.5s;
+  will-change: transform, scale, filter;
+  transition: scale 0.7s var(--ease);
 }
-.card:hover .card-media img { scale: 1.1; filter: sepia(0.14) saturate(0.98) brightness(0.74) contrast(1.04); }
+.card:hover .card-media img { scale: 1.1; }
 .card-media::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, oklch(0.14 0.014 92 / 0.20) 0%, oklch(0.14 0.014 92 / 0.62) 46%, oklch(0.12 0.014 92 / 0.95) 100%);
@@ -847,6 +885,25 @@ footer .langs b { color: var(--gold); font-weight: 600; }
   [data-delay="5"] { transition-delay: 0.40s; }
   h1.hero-title .reveal { transition: transform 1.05s var(--ease); }
   h1.hero-title.in .reveal { transform: none; }
+
+  /* chapter numeral presses in like a wax stamp (spring overshoot) */
+  .chapter-mark .rn { opacity: 0; transform: scale(0.5) rotate(-7deg); transform-origin: center; }
+  .reveal-up.in .chapter-mark .rn {
+    opacity: 1; transform: none;
+    transition: transform 0.75s cubic-bezier(0.34, 1.55, 0.64, 1) 0.12s, opacity 0.5s ease 0.12s;
+  }
+  .chapter-mark .rn-line { transform: scaleX(0); transform-origin: left; }
+  .contact-inner .chapter-mark .rn-line { transform-origin: center; }
+  .reveal-up.in .chapter-mark .rn-line {
+    transform: none; transition: transform 0.7s var(--ease) 0.3s;
+  }
+
+  /* the accent word settles in from a blur, like wet ink drying on the page */
+  .section-title .g, .contact h2 .g { opacity: 0; filter: blur(7px); will-change: filter; }
+  .section-head.in .section-title .g, .contact-inner.in h2 .g {
+    opacity: 1; filter: blur(0);
+    transition: filter 0.9s ease 0.18s, opacity 0.75s ease 0.18s;
+  }
 }
 
 /* ============================================================
