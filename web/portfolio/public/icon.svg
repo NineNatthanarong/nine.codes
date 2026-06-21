@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#1c1813"/>
+  <!-- astrolabe dial -->
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#c4765a" stroke-width="1.4" opacity="0.5"/>
+  <g stroke="#c4765a" stroke-width="1.4" opacity="0.5" stroke-linecap="round">
+    <line x1="32" y1="6.5" x2="32" y2="11"/>
+    <line x1="57.5" y1="32" x2="53" y2="32"/>
+    <line x1="32" y1="57.5" x2="32" y2="53"/>
+    <line x1="6.5" y1="32" x2="11" y2="32"/>
+  </g>
+  <!-- monogram N -->
+  <g stroke="#d07e60" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M23 43 V22"/>
+    <path d="M23 22 L41 43"/>
+    <path d="M41 43 V22"/>
+  </g>
+  <!-- brand dot -->
+  <circle cx="44.5" cy="43.5" r="2.7" fill="#d99f73"/>
+</svg>

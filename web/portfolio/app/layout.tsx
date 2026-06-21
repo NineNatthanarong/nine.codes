@@ -38,9 +38,12 @@ export const metadata: Metadata = {
   description,
   applicationName: "Nine — Natthanarong Tiangjit Portfolio",
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "any" }],
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     shortcut: "/favicon.ico",
-    apple: [{ url: "/favicon.ico" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
   },
   keywords: [
     "Natthanarong",
@@ -127,8 +130,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#F4EEE2" }],
-  colorScheme: "light",
+  themeColor: [{ color: "#1c1813" }],
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
