@@ -365,6 +365,17 @@ img { display: block; max-width: 100%; }
   padding-top: 110px;
   position: relative;
   overflow: hidden;
+  perspective: var(--persp, 1500px);
+  perspective-origin: 50% 42%;
+}
+/* dolly-zoom vignette — frame closes in as you dive (opacity driven by JS) */
+.hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 45%, oklch(0 0 0 / 0.72) 100%);
+  opacity: var(--vig, 0);
 }
 .hero-orb {
   position: absolute;
@@ -375,11 +386,12 @@ img { display: block; max-width: 100%; }
   filter: blur(70px);
   opacity: 0.9;
   z-index: 0;
-  animation: float 20s ease-in-out infinite;
 }
-@keyframes float {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50% { transform: translate(-24px, 26px) scale(1.05); }
+/* depth-stage becomes one transformable 3D plane for the dolly-zoom */
+.depth-stage {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  z-index: 0;
 }
 .hero .wrap { position: relative; z-index: 1; }
 
@@ -1004,10 +1016,16 @@ footer .langs b { color: var(--gold); font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   .px, .card-media, .about-photo img { transform: none !important; }
   .lamp { display: none; }
+  .hero { perspective: none; }
+  .hero-orb, .depth-stage, .reveal-layer { transform: none !important; }
+  .hero::after { opacity: 0 !important; }
 }
 @media (max-width: 760px) {
   .float, .shape, .ghostword { display: none; }
   .lamp { display: none; }
+  .hero { perspective: none; }
+  .hero-orb, .depth-stage, .reveal-layer { transform: none !important; }
+  .hero::after { opacity: 0 !important; }
 }
 
 /* ============================================================

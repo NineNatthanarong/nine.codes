@@ -251,6 +251,18 @@ export default function Interactions() {
         ...document.querySelectorAll<HTMLImageElement>(".card-media img"),
       ].map((img) => ({ img, card: img.closest(".card") as HTMLElement }));
 
+      // Dolly-zoom (vertigo): headline (.wrap, z0) stays locked while the
+      // background depth planes recede + the hero perspective narrows on scroll.
+      const heroEl = document.querySelector<HTMLElement>(".hero");
+      const dolly = small
+        ? []
+        : ([
+            { el: heroEl?.querySelector<HTMLElement>(".hero-orb"), z: 1150 },
+            { el: document.getElementById("revealLayer"), z: 900 },
+            { el: document.getElementById("depthStage"), z: 650 },
+          ].filter((d) => d.el) as { el: HTMLElement; z: number }[]);
+      const scrollCue = document.querySelector<HTMLElement>(".scroll-cue");
+
       const visible = new Set<Element>();
       const vio = new IntersectionObserver(
         (entries) => {
@@ -285,6 +297,20 @@ export default function Interactions() {
             `sepia(${(0.5 - 0.4 * p).toFixed(3)}) saturate(${(0.55 + 0.45 * p).toFixed(3)}) ` +
             `brightness(${(0.5 + 0.34 * p).toFixed(3)}) contrast(${(1.22 - 0.2 * p).toFixed(3)}) ` +
             `blur(${((1 - p) * 3).toFixed(2)}px)`;
+        }
+        if (heroEl && dolly.length) {
+          const hr = heroEl.getBoundingClientRect();
+          if (hr.bottom > 0 && hr.top < vh) {
+            let s = -hr.top / (hr.height * 0.9);
+            s = s < 0 ? 0 : s > 1 ? 1 : s;
+            const e = s * s * (3 - 2 * s); // smoothstep
+            heroEl.style.perspective = (1500 - 940 * e).toFixed(0) + "px";
+            heroEl.style.setProperty("--vig", (e * 0.85).toFixed(3));
+            for (const d of dolly) {
+              d.el.style.transform = `translateZ(${(-d.z * e).toFixed(1)}px)`;
+            }
+            if (scrollCue) scrollCue.style.opacity = (1 - e * 1.3).toFixed(3);
+          }
         }
         frameRaf = raf(frame);
       };
