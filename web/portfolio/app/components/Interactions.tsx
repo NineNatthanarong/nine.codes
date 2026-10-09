@@ -431,8 +431,8 @@ export default function Interactions() {
           let p = 1 - Math.abs(r.top + r.height / 2 - center) / (vh * 0.62);
           p = p < 0 ? 0 : p > 1 ? 1 : p;
           d.img.style.filter =
-            `sepia(${(0.5 - 0.4 * p).toFixed(3)}) saturate(${(0.55 + 0.45 * p).toFixed(3)}) ` +
-            `brightness(${(0.5 + 0.34 * p).toFixed(3)}) contrast(${(1.22 - 0.2 * p).toFixed(3)}) ` +
+            `saturate(${(0.3 + 0.7 * p).toFixed(3)}) ` +
+            `brightness(${(0.5 + 0.28 * p).toFixed(3)}) contrast(${(1.22 - 0.2 * p).toFixed(3)}) ` +
             `blur(${((1 - p) * 3).toFixed(2)}px)`;
         }
         if (heroEl && dolly.length) {

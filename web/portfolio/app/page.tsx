@@ -122,7 +122,7 @@ export default function Home() {
             />
             <span
               className="float neon-c px"
-              style={{ left: "6%", top: "20%", fontSize: "92px", lineHeight: 1, "--o": ".55" } as CSSVars}
+              style={{ left: "47%", top: "9%", fontSize: "70px", lineHeight: 1, "--o": ".55" } as CSSVars}
               data-px-y=".16"
             >
               &amp;
@@ -132,7 +132,7 @@ export default function Home() {
               style={{ right: "12%", top: "62%", fontSize: "60px", lineHeight: 1, "--o": ".5" } as CSSVars}
               data-px-y=".14"
             >
-              ❧
+              ✳
             </span>
             <span
               className="float px"
@@ -177,7 +177,7 @@ export default function Home() {
                 <i>★</i> Outstanding Innovation Award — Super AI SS5
               </div>
               <div className="hbadge">
-                <i>❦</i> Head of Operations — BU ROBOTSTUDIO
+                <i>✺</i> Head of Operations — BU ROBOTSTUDIO
               </div>
               <div className="hbadge">
                 <i>✦</i> Tech Talent 100% Scholarship
@@ -208,7 +208,7 @@ export default function Home() {
             WORK
           </span>
           <span className="float neon-v px" style={{ left: "5%", top: "40%", fontSize: "44px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".16">
-            ❧
+            ✳
           </span>
           <div className="wrap">
             <div className="section-head reveal-up">
@@ -500,7 +500,7 @@ export default function Home() {
             GROW
           </span>
           <span className="float neon-c px" style={{ right: "8%", top: "22%", fontSize: "56px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".18">
-            ❦
+            ✺
           </span>
           <div className="wrap">
             <div className="section-head reveal-up">
