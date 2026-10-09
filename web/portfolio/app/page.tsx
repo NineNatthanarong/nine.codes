@@ -1,620 +1,452 @@
 import Interactions from "./components/Interactions";
 
-/* Allow CSS custom properties in inline style objects */
-type CSSVars = React.CSSProperties & Record<string, string | number>;
+type Project = {
+  title: string;
+  tag: string;
+  role?: string;
+  cats: string;
+  img?: string;
+  alt?: string;
+  glyph?: string;
+  blurb: string;
+  pills: string[];
+  stats?: [string, string][];
+};
+
+const projects: Project[] = [
+  {
+    title: "Super AI Engineer SS5",
+    tag: "Award · National Winner",
+    role: "Outstanding Innovation Award · CAIO @ RaoChatHub",
+    cats: "award ai",
+    img: "/images/projects/team_photo.jpeg",
+    alt: "Super AI Engineer SS5: Outstanding Innovation Award won by Natthanarong (Nine)",
+    blurb: "Won Thailand's 5th National AI Exhibition with an enterprise RAG chatbot. I was Chief AI Officer for the chatbot work at RaoChatHub.",
+    pills: ["RAG", "LLM", "Full-Stack"],
+  },
+  {
+    title: "BU ROBOTSTUDIO",
+    tag: "Leadership",
+    role: "Head of Operations, until May 2026",
+    cats: "robotics",
+    img: "/images/projects/453008415_17959542005792478_5114396889725007570_n.jpg",
+    alt: "BU ROBOTSTUDIO robotics lab led by Natthanarong Tiangjit",
+    blurb: "I led a robotics lab of 50+ members, mentored other students and ran the Open House events.",
+    pills: ["Leadership", "Robotics"],
+    stats: [["3", "Years"], ["50+", "Members"], ["3", "Open Houses"]],
+  },
+  {
+    title: "ABB Automation",
+    tag: "Industrial · Top 8",
+    cats: "robotics",
+    img: "/images/projects/IMG_2091.JPG",
+    alt: "ABB Automation robotics training, top 8 finalist",
+    blurb: "One of 8 finalists picked from 40 teams. The training covered ABB robots, PLC and computer vision.",
+    pills: ["ABB", "CV"],
+  },
+  {
+    title: "AI Smart Parking",
+    tag: "Competition · Finalist",
+    cats: "robotics ai",
+    img: "/images/projects/plc2024-team.PNG",
+    alt: "AI Smart Parking, finalist at the Mitsubishi PLC Competition 2024",
+    blurb: "Finalist at the Mitsubishi PLC Competition 2024. A smart parking system that pairs PLC control with computer vision.",
+    pills: ["PLC", "Ladder Logic"],
+  },
+  {
+    title: "HyperGas AI",
+    tag: "AI Project · Live",
+    cats: "ai",
+    img: "/images/projects/469105467_17976154043792478_347761597580673379_n.jpg",
+    alt: "HyperGas AI safety-training system",
+    blurb: "A safety-training system for gas stations, built to reduce human error in safety procedures.",
+    pills: ["AI Training", "Safety"],
+  },
+  {
+    title: "functions.codes",
+    tag: "Web · Personal",
+    role: "Free tools, no ads",
+    cats: "web ai",
+    img: "/images/projects/functions-codes-web.png",
+    alt: "functions.codes, free online tools with no ads, by Nine",
+    blurb: "A site of free online tools, including a clean PDF converter. No ads.",
+    pills: ["Next.js", "Clean UI"],
+  },
+  {
+    title: "Gender Classification AI",
+    tag: "AI · Self-Initiated",
+    role: "End-to-end NLP deployment",
+    cats: "ai web",
+    img: "/images/projects/webpage.png",
+    alt: "Gender Classification AI, an NLP web app",
+    blurb: "Classifies gender from text using NLP and web scraping. I built it and deployed it on Django myself.",
+    pills: ["NLP", "Django"],
+  },
+  {
+    title: "LearnLab",
+    tag: "Innovation · 2× Finalist",
+    cats: "award robotics",
+    img: "/images/projects/1761292091147.jpeg",
+    alt: "LearnLab, an AI and AR handicraft marketplace, two-time finalist",
+    blurb: "An AI and AR marketplace for handicrafts, plus a tourism photo booth. Two-time finalist.",
+    pills: ["AI", "AR"],
+  },
+  {
+    title: "Learning Express",
+    tag: "International",
+    cats: "ai web",
+    img: "/images/projects/1761292376519.jpeg",
+    alt: "Learning Express, a Singapore Polytechnic collaboration",
+    blurb: "Three years working with Singapore Polytechnic, using Design Thinking on community problems.",
+    pills: ["Design Thinking"],
+  },
+  {
+    title: "TESA Top Gun Rally",
+    tag: "Competition · Defense",
+    cats: "ai robotics",
+    img: "/images/projects/1763286567350.jpeg",
+    alt: "TESA Top Gun Rally, a defense innovation sprint",
+    blurb: "A 7-day defense innovation sprint. We used object detection, web development and MATLAB.",
+    pills: ["Object Detection", "MATLAB"],
+  },
+  {
+    title: "Pothole Detection · 2.5D Camera",
+    tag: "Research · Computer Vision",
+    role: "Depth-aware object detection",
+    cats: "ai robotics",
+    glyph: "2.5D",
+    blurb: "I captured point-cloud data with a depth camera, then built a 2.5D imaging pipeline with a Transformer model to find road damage.",
+    pills: ["Point Cloud", "Transformer", "Depth Camera"],
+  },
+  {
+    title: "Website Developer",
+    tag: "Full-Stack · Ongoing",
+    role: "10+ sites, front to back",
+    cats: "web",
+    glyph: "10+",
+    blurb: "I have built and shipped 10+ websites, front end to back end, with CI/CD, REST APIs and authentication.",
+    pills: ["React", "Next.js", "Express", "CI/CD"],
+  },
+];
+
+const stack: [string, string, string[]][] = [
+  ["01", "Full-Stack Web", ["React", "Next.js", "Express", "REST API", "Auth", "CI/CD"]],
+  ["02", "Machine Learning & AI", ["Python", "NLP", "LLM & RAG", "Model Optimization", "Data Science"]],
+  ["03", "Vision & Robotics", ["Object Detection", "Image Processing", "Point Cloud", "Robotics Control", "PLC"]],
+  ["04", "Languages & Core", ["Python", "C", "Ladder Logic", "Serial Comms"]],
+  ["05", "Deploy & Ops", ["Docker", "GitHub", "GitLab", "Cloud Deploy"]],
+  ["06", "Design Thinking", ["User-Focused", "Prototyping", "Cross-Cultural", "Teamwork"]],
+];
+
+const traits: [string, string, string][] = [
+  ["01", "I care about details", "I follow a project from the first prototype to the final deploy."],
+  ["02", "I design for people", "A technically strong product still fails if it is hard to use."],
+  ["03", "I keep learning", "Robotics, hackathons and competitions are how I learn fastest."],
+  ["04", "I work with teams", "I have led teams, mentored peers and helped build the community at BU."],
+];
+
+const path: { date: string; title: string; org: string; pts: string[] }[] = [
+  {
+    date: "Mar 2024 to May 2026",
+    title: "Team Leader",
+    org: "BU ROBOTSTUDIO",
+    pts: [
+      "Designed the software architecture and AI integration for robotics and automation projects",
+      "Led cross-functional teams and turned technical ideas into plans people could act on",
+      "Moved up with the lab: Staff in 2023, Operations Lead in 2024, Head of Operations in 2025, and finished my term in May 2026",
+    ],
+  },
+  {
+    date: "October 2025",
+    title: "Outstanding Innovation Award",
+    org: "Super AI Engineer Season 5 · AiAT",
+    pts: [
+      "Honored at Thailand's 5th National AI Exhibition",
+      "Delivered custom software built for scale, security and ease of use",
+      "Built an enterprise RAG chatbot for a real business",
+    ],
+  },
+  {
+    date: "Mar 2024 to 2026",
+    title: "Collaborator",
+    org: "Learning Express · Singapore Polytechnic",
+    pts: [
+      "Applied engineering and Design Thinking to real community problems",
+      "Combined technical analysis with user-focused design",
+      "Improved my English and cross-cultural teamwork",
+    ],
+  },
+  {
+    date: "2023 to Present",
+    title: "AI Engineering Student",
+    org: "Bangkok University · GPAX 3.29",
+    pts: [
+      "Tech Talent 100% Full Scholarship recipient",
+      "B.Eng in AI Engineering & Data Science, fourth year",
+      "Certified Data Scientist (Nanodegree) and AI Innovator by AiAT",
+    ],
+  },
+];
+
+const tape = ["Python", "Machine Learning", "LLM & RAG", "Object Detection", "Next.js", "Docker", "PLC & Robotics", "Point Cloud"];
 
 export default function Home() {
   return (
     <>
-      {/* ============ INTRO CURTAIN ============ */}
-      <div className="curtain" id="curtain">
-        <div className="curtain-inner">
-          <span className="monogram">N</span>
-          <span className="curtain-word">nine.codes</span>
-          <span className="curtain-rule" />
-        </div>
-      </div>
-
-      {/* ambient lamplight + reading progress */}
-      <div className="lamp" id="lamp" />
       <div className="progress" id="progress" />
 
-      {/* ============ CHAPTER RAIL ============ */}
-      <nav className="rail" id="rail" aria-label="Chapters">
-        <a href="#work" data-to="work"><span className="rn">I</span><span className="rl">Work</span></a>
-        <a href="#about" data-to="about"><span className="rn">II</span><span className="rl">About</span></a>
-        <a href="#expertise" data-to="expertise"><span className="rn">III</span><span className="rl">Stack</span></a>
-        <a href="#experience" data-to="experience"><span className="rn">IV</span><span className="rl">Path</span></a>
-        <a href="#contact" data-to="contact"><span className="rn">V</span><span className="rl">Contact</span></a>
-      </nav>
-
       {/* ============ NAV ============ */}
-      <nav id="nav">
-        <div className="wrap">
-          <a className="logo" href="#top">
-            <b>nine</b>
-            <span className="dot">.</span>codes
-          </a>
-          <div className="nav-links">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#expertise">Stack</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <a className="nav-cta" href="#contact">
-            Say hello →
-          </a>
+      <nav id="nav" aria-label="Primary">
+        <a className="logo" href="#top">nine<span>.</span>codes</a>
+        <div className="nav-links">
+          <a href="#work"><i>01</i>Work</a>
+          <a href="#about"><i>02</i>About</a>
+          <a href="#expertise"><i>03</i>Stack</a>
+          <a href="#experience"><i>04</i>Path</a>
         </div>
+        <a className="nav-cta" href="#contact">Say hello ↗</a>
       </nav>
 
       <main id="top">
         {/* ============ HERO ============ */}
         <header className="hero" data-screen-label="Hero">
-          <div className="hero-orb" />
+          <p className="mono hero-top">
+            <span className="blink" /> Natthanarong &quot;Nine&quot; Tiangjit / AI developer / Bangkok, TH
+          </p>
+          <h1 className="hero-name" id="heroName" aria-label="Nine, Natthanarong Tiangjit, AI developer">
+            {["N", "I", "N", "E"].map((ch, i) => (
+              <span className="hl" key={i} aria-hidden="true"><b data-hl={i}>{ch}</b></span>
+            ))}
+            <span className="hl hot" aria-hidden="true"><b>.</b></span>
+          </h1>
 
-          {/* ===== Invisible-ink layer — only revealed inside the lamplight ===== */}
-          <svg className="reveal-layer" id="revealLayer" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            {/* astrolabe dial */}
-            <g>
-              <circle className="dial" cx="1150" cy="420" r="250" />
-              <circle className="dial-faint" cx="1150" cy="420" r="200" strokeDasharray="2 9" />
-              <circle className="dial" cx="1150" cy="420" r="120" />
-              <circle className="dial-faint" cx="1150" cy="420" r="60" />
-              <line className="dial-faint" x1="880" y1="420" x2="1420" y2="420" />
-              <line className="dial-faint" x1="1150" y1="150" x2="1150" y2="690" />
-              <line className="tick" x1="1150" y1="170" x2="1150" y2="186" />
-              <line className="tick" x1="1150" y1="654" x2="1150" y2="670" />
-              <line className="tick" x1="900" y1="420" x2="916" y2="420" />
-              <line className="tick" x1="1384" y1="420" x2="1400" y2="420" />
-              <line className="tick" x1="973" y1="243" x2="984" y2="254" />
-              <line className="tick" x1="1327" y1="243" x2="1316" y2="254" />
-              <line className="tick" x1="973" y1="597" x2="984" y2="586" />
-              <line className="tick" x1="1327" y1="597" x2="1316" y2="586" />
-              <circle className="node" cx="1150" cy="420" r="3" />
-            </g>
-            {/* constellation */}
-            <g>
-              <polyline className="const" points="120,150 250,96 360,180 520,120 470,250 600,300" />
-              <circle className="node" cx="120" cy="150" r="2.5" />
-              <circle className="node" cx="250" cy="96" r="3" />
-              <circle className="node" cx="360" cy="180" r="2" />
-              <circle className="node" cx="520" cy="120" r="3" />
-              <circle className="node" cx="470" cy="250" r="2.5" />
-              <circle className="node" cx="600" cy="300" r="2" />
-            </g>
-            {/* circuit + robot-arm schematic */}
-            <g>
-              <path className="wire" d="M250 700 H420 V628 H520 V690 H640" />
-              <path className="wire" d="M520 628 V560 H470" />
-              <circle className="node-o" cx="250" cy="700" r="6" />
-              <circle className="node" cx="420" cy="628" r="3" />
-              <circle className="node-o" cx="640" cy="690" r="6" />
-              <rect className="wire" x="690" y="664" width="54" height="34" rx="3" />
-              <line className="wire" x1="300" y1="500" x2="360" y2="440" />
-              <line className="wire" x1="360" y1="440" x2="450" y2="470" />
-              <line className="wire" x1="450" y1="470" x2="500" y2="410" />
-              <circle className="node" cx="300" cy="500" r="4" />
-              <circle className="node-o" cx="360" cy="440" r="5" />
-              <circle className="node-o" cx="450" cy="470" r="5" />
-              <circle className="node" cx="500" cy="410" r="3" />
-            </g>
-            {/* margin notes, in invisible ink */}
-            <text x="86" y="120" fontSize="15">fig. I — curiosity</text>
-            <text x="980" y="726" fontSize="14">13.7563° N, 100.5018° E</text>
-            <text x="300" y="560" fontSize="14">def build( ):</text>
-            <text x="560" y="360" fontSize="14">{"{ intelligence · craft }"}</text>
-            <text className="mono" x="690" y="170" fontSize="12">01001010</text>
-            <text className="mono" x="1010" y="300" fontSize="13">∿ signal</text>
-          </svg>
-
-          {/* quiet editorial ornaments — engraved rings + serif glyphs */}
-          <div className="depth-stage" id="depthStage">
-            <span
-              className="shape ring c px"
-              style={{ width: "360px", height: "360px", right: "4%", top: "12%", "--o": ".5" } as CSSVars}
-              data-px-y=".06"
-            />
-            <span
-              className="shape ring v px"
-              style={{ width: "130px", height: "130px", left: "3%", top: "58%", "--o": ".45" } as CSSVars}
-              data-px-y=".12"
-            />
-            <span
-              className="float neon-c px"
-              style={{ left: "6%", top: "20%", fontSize: "92px", lineHeight: 1, "--o": ".55" } as CSSVars}
-              data-px-y=".16"
-            >
-              &amp;
-            </span>
-            <span
-              className="float neon-v px"
-              style={{ right: "12%", top: "62%", fontSize: "60px", lineHeight: 1, "--o": ".5" } as CSSVars}
-              data-px-y=".14"
-            >
-              ❧
-            </span>
-            <span
-              className="float px"
-              style={{ right: "30%", top: "18%", fontSize: "30px", fontStyle: "italic", "--o": ".4" } as CSSVars}
-              data-px-y=".2"
-            >
-              ✦
-            </span>
-          </div>
-          <div className="wrap">
-            <div className="status reveal-up">
-              <span className="pulse" /> Currently — Trainee Internship
-            </div>
-            <p className="hero-eyebrow reveal-up" data-delay="1">
-              // <b>Natthanarong &quot;Nine&quot; Tiangjit</b> — Bangkok, Thailand
-            </p>
-            <h1 className="hero-title tilt3d px" id="heroTitle" data-px-mx="-20" data-px-my="-14">
-              <span className="line">
-                <span className="reveal">BUILT WITH</span>
-              </span>
-              <span className="line">
-                <span className="reveal">
-                  <span className="title-neon">CURIOSITY</span>
-                </span>
-              </span>
-            </h1>
-            <p className="hero-sub reveal-up" data-delay="2">
-              I&apos;m Nine — an AI developer in Bangkok. I take ambitious ideas and turn them into{" "}
-              <b>intelligent systems that ship</b>, scale gracefully, and feel effortless to use.
-            </p>
-            <div className="hero-actions reveal-up" data-delay="3">
-              <a href="#work" className="btn btn-primary">
-                See the work <span className="arrow">↗</span>
-              </a>
-              <a href="#contact" className="btn btn-ghost">
-                Say hello
-              </a>
-            </div>
-            <p className="lamp-hint" id="lampHint">Move your cursor — some things only show by lamplight.</p>
-            <div className="hero-badges reveal-up" data-delay="4">
-              <div className="hbadge">
-                <i>★</i> Outstanding Innovation Award — Super AI SS5
-              </div>
-              <div className="hbadge">
-                <i>❦</i> Head of Operations — BU ROBOTSTUDIO
-              </div>
-              <div className="hbadge">
-                <i>✦</i> Tech Talent 100% Scholarship
+          <div className="hero-grid">
+            <div>
+              <p className="hero-tag">I make AI <em>do real work.</em></p>
+              <p className="hero-sub">
+                I&apos;m a fourth-year AI engineering student in Bangkok. I build <b>chatbots, vision systems and websites</b>, and I like seeing real people use them.
+              </p>
+              <div className="hero-actions">
+                <a href="#work" className="btn btn-hot">See the work ↘</a>
+                <a href="#contact" className="btn">Email me</a>
               </div>
             </div>
-          </div>
-          <div className="scroll-cue">
-            <span>Scroll</span>
-            <span className="bar" />
+            <dl className="spec">
+              <div><dt>Role</dt><dd>AI Developer</dd></div>
+              <div><dt>Base</dt><dd>Bangkok, Thailand</dd></div>
+              <div><dt>Now</dt><dd>Trainee intern</dd></div>
+              <div><dt>Won</dt><dd>Outstanding Innovation Award, Super AI SS5</dd></div>
+              <div><dt>Led</dt><dd>BU ROBOTSTUDIO, until May 2026</dd></div>
+              <div><dt>Funded</dt><dd>Tech Talent 100% Scholarship</dd></div>
+            </dl>
           </div>
         </header>
 
-        {/* ============ MARQUEE ============ */}
-        <div className="marquee" aria-hidden="true">
-          <div className="marquee-track" id="marquee">
-            <span className="marquee-item">
-              <span>Python</span><em>/</em><span>Machine Learning</span><em>/</em><span>LLM &amp; RAG</span><em>/</em><span>Object Detection</span><em>/</em><span>Next.js</span><em>/</em><span>Docker</span><em>/</em><span>PLC &amp; Robotics</span><em>/</em><span>Point Cloud</span><em>/</em>
-            </span>
-            <span className="marquee-item">
-              <span>Python</span><em>/</em><span>Machine Learning</span><em>/</em><span>LLM &amp; RAG</span><em>/</em><span>Object Detection</span><em>/</em><span>Next.js</span><em>/</em><span>Docker</span><em>/</em><span>PLC &amp; Robotics</span><em>/</em><span>Point Cloud</span><em>/</em>
-            </span>
+        {/* ============ TAPE ============ */}
+        <div className="tape" aria-hidden="true">
+          <div className="tape-track">
+            {[0, 1].map((k) => (
+              <span className="tape-set" key={k}>
+                {tape.map((t) => (
+                  <span key={t}>{t}<i>✕</i></span>
+                ))}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* ============ WORK ============ */}
         <section className="block" id="work" data-screen-label="Work">
-          <span className="ghostword px" style={{ right: "-3%", top: "4%", fontSize: "clamp(7rem,17vw,16rem)" }} data-px-y=".12" data-px-mx="38">
-            WORK
-          </span>
-          <span className="float neon-v px" style={{ left: "5%", top: "40%", fontSize: "44px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".16">
-            ❧
-          </span>
-          <div className="wrap">
-            <div className="section-head reveal-up">
-              <div className="chapter-mark"><span className="rn">I</span><span className="rn-line" /></div>
-              <span className="kicker">The Work</span>
-              <h2 className="section-title">
-                Made to<br />
-                <span className="g">matter.</span>
-              </h2>
-              <p className="section-desc">
-                A handful of things I&apos;m proud of. Every one shipped, used by real people, and built to make something a little better.
-              </p>
-            </div>
+          <div className="sec-head">
+            <p className="mono sec-no">§ 01 / Work</p>
+            <h2 className="sec-title">Things I&apos;ve <span className="hot">built.</span></h2>
+            <p className="sec-desc">Twelve projects from competitions, university and my own time. Open any row for the details.</p>
+          </div>
 
-            <div className="filters reveal-up" id="filters">
-              <button className="filter active" data-f="all">All</button>
-              <button className="filter" data-f="ai">AI</button>
-              <button className="filter" data-f="robotics">Robotics</button>
-              <button className="filter" data-f="web">Web</button>
-              <button className="filter" data-f="award">Awards</button>
-            </div>
+          <div className="filters" id="filters" role="group" aria-label="Filter projects">
+            <button className="filter active" data-f="all">All</button>
+            <button className="filter" data-f="ai">AI</button>
+            <button className="filter" data-f="robotics">Robotics</button>
+            <button className="filter" data-f="web">Web</button>
+            <button className="filter" data-f="award">Awards</button>
+            <p className="mono filter-count" id="filterCount" aria-live="polite" />
+          </div>
 
-            <div className="work-grid" id="grid">
-              <article className="card feature span-7 reveal-up" data-cat="award ai">
-                <div className="card-media">
-                  <img src="/images/projects/team_photo.jpeg" alt="Super AI Engineer SS5 — Outstanding Innovation Award won by Natthanarong (Nine)" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Award · National Winner</span>
-                  <h3>Super AI Engineer SS5</h3>
-                  <div className="role">Outstanding Innovation Award · CAIO @ RaoChatHub</div>
-                  <p className="blurb">Won Thailand&apos;s 5th National AI Exhibition. Built an enterprise RAG chatbot and led chatbot solutions as Chief AI Officer.</p>
-                  <div className="card-pill-row"><span className="card-pill">RAG</span><span className="card-pill">LLM</span><span className="card-pill">Full-Stack</span></div>
-                </div>
-              </article>
-
-              <article className="card feature span-5 reveal-up" data-cat="robotics" data-delay="1">
-                <div className="card-media">
-                  <img src="/images/projects/453008415_17959542005792478_5114396889725007570_n.jpg" alt="BU ROBOTSTUDIO robotics lab led by Natthanarong Tiangjit" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Leadership</span>
-                  <h3>BU ROBOTSTUDIO</h3>
-                  <div className="role">Head of Operations</div>
-                  <p className="blurb">Led a 50+ member robotics lab, mentored peers, ran Open House events.</p>
-                  <div className="card-stats">
-                    <div className="s"><strong>3</strong><span>Years</span></div>
-                    <div className="s"><strong>50+</strong><span>Members</span></div>
-                    <div className="s"><strong>3</strong><span>Open Houses</span></div>
+          <div className="index" id="grid">
+            {projects.map((p, i) => {
+              const id = `proj-${i}`;
+              return (
+                <article className="row rv-row" data-cat={p.cats} style={{ "--i": i } as React.CSSProperties} key={p.title}>
+                  <button className="row-head" aria-expanded="false" aria-controls={id}>
+                    <span className="r-n mono">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="r-t">{p.title}</span>
+                    <span className="r-tag mono">{p.tag}</span>
+                    <span className="r-x" aria-hidden="true" />
+                  </button>
+                  <div className="row-body" id={id}>
+                    <div className="row-inner">
+                      <div className="row-media">
+                        {p.img ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={p.img} alt={p.alt} loading="lazy" />
+                        ) : (
+                          <div className="glyph" aria-hidden="true">{p.glyph}</div>
+                        )}
+                      </div>
+                      <div className="row-text">
+                        {p.role && <p className="mono r-role">{p.role}</p>}
+                        <p className="blurb">{p.blurb}</p>
+                        {p.stats && (
+                          <div className="r-stats">
+                            {p.stats.map(([n, l]) => (
+                              <div key={l}><strong>{n}</strong><span className="mono">{l}</span></div>
+                            ))}
+                          </div>
+                        )}
+                        <p className="mono r-pills">{p.pills.join(" / ")}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </article>
+                </article>
+              );
+            })}
+          </div>
 
-              <article className="card span-4 reveal-up" data-cat="robotics">
-                <div className="card-media">
-                  <img src="/images/projects/IMG_2091.JPG" alt="ABB Automation robotics training — top 8 finalist" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Industrial · Top 8</span>
-                  <h3>ABB Automation</h3>
-                  <p className="blurb">Selected from 40 teams to final 8. Trained in ABB robotics, PLC &amp; computer vision.</p>
-                  <div className="card-pill-row"><span className="card-pill">ABB</span><span className="card-pill">CV</span></div>
-                </div>
-              </article>
-
-              <article className="card span-4 reveal-up" data-cat="robotics ai" data-delay="1">
-                <div className="card-media">
-                  <img src="/images/projects/plc2024-team.PNG" alt="AI Smart Parking — Mitsubishi PLC Competition 2024 finalist" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Competition · Finalist</span>
-                  <h3>AI Smart Parking</h3>
-                  <p className="blurb">Mitsubishi PLC 2024 finalist — AI-powered smart parking with PLC + computer vision.</p>
-                  <div className="card-pill-row"><span className="card-pill">PLC</span><span className="card-pill">Ladder Logic</span></div>
-                </div>
-              </article>
-
-              <article className="card span-4 reveal-up" data-cat="ai" data-delay="2">
-                <div className="card-media">
-                  <img src="/images/projects/469105467_17976154043792478_347761597580673379_n.jpg" alt="HyperGas AI safety-training system" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">AI Project · Live</span>
-                  <h3>HyperGas AI</h3>
-                  <p className="blurb">AI safety-training system for gas stations, cutting human error in safety protocols.</p>
-                  <div className="card-pill-row"><span className="card-pill">AI Training</span><span className="card-pill">Safety</span></div>
-                </div>
-              </article>
-
-              <article className="card span-6 reveal-up" data-cat="web ai">
-                <div className="card-media">
-                  <img src="/images/projects/functions-codes-web.png" alt="functions.codes — free ad-free online tools by Nine" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Web · Personal</span>
-                  <h3>functions.codes</h3>
-                  <div className="role">Ad-free tools for humans</div>
-                  <p className="blurb">A platform of free online tools — including a clean PDF converter — with zero ads.</p>
-                  <div className="card-pill-row"><span className="card-pill">Next.js</span><span className="card-pill">Clean UI</span></div>
-                </div>
-              </article>
-
-              <article className="card span-6 reveal-up" data-cat="ai web" data-delay="1">
-                <div className="card-media">
-                  <img src="/images/projects/webpage.png" alt="Gender Classification AI — NLP web app" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">AI · Self-Initiated</span>
-                  <h3>Gender Classification AI</h3>
-                  <div className="role">End-to-end NLP deployment</div>
-                  <p className="blurb">Classifies gender from text using NLP + web scraping, deployed end-to-end on Django.</p>
-                  <div className="card-pill-row"><span className="card-pill">NLP</span><span className="card-pill">Django</span></div>
-                </div>
-              </article>
-
-              {/* secondary */}
-              <article className="card span-4 reveal-up" data-cat="award robotics">
-                <div className="card-media">
-                  <img src="/images/projects/1761292091147.jpeg" alt="LearnLab — AI/AR handicraft marketplace, two-time finalist" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Innovation · 2× Finalist</span>
-                  <h3>LearnLab</h3>
-                  <p className="blurb">AI/AR marketplace for handicrafts + a tourism PhotoBooth. Two-time finalist.</p>
-                </div>
-              </article>
-
-              <article className="card span-4 reveal-up" data-cat="ai web" data-delay="1">
-                <div className="card-media">
-                  <img src="/images/projects/1761292376519.jpeg" alt="Learning Express — Singapore Polytechnic collaboration" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">International</span>
-                  <h3>Learning Express</h3>
-                  <p className="blurb">3-year Singapore Polytechnic collaboration using Design Thinking for community challenges.</p>
-                </div>
-              </article>
-
-              <article className="card span-4 reveal-up" data-cat="ai robotics" data-delay="2">
-                <div className="card-media">
-                  <img src="/images/projects/1763286567350.jpeg" alt="TESA Top Gun Rally — defense-innovation sprint" loading="lazy" />
-                </div>
-                <div className="card-body">
-                  <span className="card-tag">Competition · Defense</span>
-                  <h3>TESA Top Gun Rally</h3>
-                  <p className="blurb">7-day defense-innovation sprint using object detection, web dev &amp; MATLAB.</p>
-                </div>
-              </article>
-
-              <article className="card nomedia span-6 reveal-up" data-cat="ai robotics">
-                <div className="card-field"><span className="dotmesh" /><span className="glyph">2.5D</span></div>
-                <div className="card-body">
-                  <span className="card-tag">Research · Computer Vision</span>
-                  <h3>Pothole Detection · 2.5D Camera</h3>
-                  <div className="role">Depth-aware object detection</div>
-                  <p className="blurb">Used a depth camera to capture point-cloud data and built a 2.5D imaging pipeline with a Transformer model to detect road damage.</p>
-                  <div className="card-pill-row"><span className="card-pill">Point Cloud</span><span className="card-pill">Transformer</span><span className="card-pill">Depth Camera</span></div>
-                </div>
-              </article>
-
-              <article className="card nomedia span-6 reveal-up" data-cat="web" data-delay="1">
-                <div className="card-field"><span className="dotmesh" /><span className="glyph">10+</span></div>
-                <div className="card-body">
-                  <span className="card-tag">Full-Stack · Ongoing</span>
-                  <h3>Website Developer</h3>
-                  <div className="role">10+ sites, front to back</div>
-                  <p className="blurb">Built and shipped 10+ websites across modern frameworks — front-end to back-end, with CI/CD, REST APIs and authentication.</p>
-                  <div className="card-pill-row"><span className="card-pill">React</span><span className="card-pill">Next.js</span><span className="card-pill">Express</span><span className="card-pill">CI/CD</span></div>
-                </div>
-              </article>
-            </div>
-
-            {/* counters */}
-            <div className="stats-strip reveal-up">
-              <div className="stat"><div className="num" data-count="17" data-suffix="+">0</div><div className="lbl">Projects Shipped</div></div>
-              <div className="stat"><div className="num" data-count="8" data-suffix="">0</div><div className="lbl">Awards &amp; Finals</div></div>
-              <div className="stat"><div className="num" data-count="10" data-suffix="+">0</div><div className="lbl">Websites Built</div></div>
-              <div className="stat"><div className="num" data-count="100" data-suffix="%">0</div><div className="lbl">Tech Talent Scholarship</div></div>
-            </div>
+          <div className="stats">
+            <div className="stat"><div className="num" data-count="17" data-suffix="+">0</div><div className="mono lbl">Projects Shipped</div></div>
+            <div className="stat"><div className="num" data-count="8" data-suffix="">0</div><div className="mono lbl">Awards &amp; Finals</div></div>
+            <div className="stat"><div className="num" data-count="10" data-suffix="+">0</div><div className="mono lbl">Websites Built</div></div>
+            <div className="stat"><div className="num" data-count="100" data-suffix="%">0</div><div className="mono lbl">Tech Talent Scholarship</div></div>
           </div>
         </section>
 
         {/* ============ ABOUT ============ */}
         <section className="block" id="about" data-screen-label="About">
-          <span className="ghostword px" style={{ left: "-3%", top: "8%", fontSize: "clamp(7rem,17vw,16rem)" }} data-px-y=".1" data-px-mx="-40">
-            CODE
-          </span>
-          <span className="shape ring c px" style={{ width: "160px", height: "160px", right: "4%", top: "18%", "--o": ".4" } as CSSVars} data-px-y=".14" data-px-mx="46" data-px-my="-30" />
-          <div className="wrap">
-            <div className="section-head reveal-up">
-              <div className="chapter-mark"><span className="rn">II</span><span className="rn-line" /></div>
-              <span className="kicker">A little about me</span>
-              <h2 className="section-title">
-                More than <span className="g">just code.</span>
-              </h2>
-            </div>
-            <div className="about-grid">
-              <div className="about-photo reveal-up">
-                <div className="plate" id="aboutPlate">
-                  <img src="/images/photo-profile.jpg" alt="Natthanarong Tiangjit (Nine) — AI developer in Bangkok, Thailand" loading="lazy" />
-                  <span className="frame-tag">Bangkok, TH · est. 2024</span>
-                </div>
-              </div>
-              <div className="about-text reveal-up" data-delay="1">
-                <p className="about-lead">
-                  I&apos;m a third-year AI Engineering student, here on a <em>full scholarship</em>, living where curiosity meets craft.
-                </p>
-                <div className="about-body">
-                  <p>I&apos;ve led robotics teams and won national AI competitions, moving between hardware and software with equal joy. Every project leaves me a little wiser and a lot more eager for the next one.</p>
-                  <p>What I care about is simple: build things that genuinely matter — and make them work beautifully <em>and</em> feel right.</p>
-                </div>
-                <div className="traits">
-                  <div className="trait"><div className="ic">01 / build</div><h4>I sweat the details</h4><p>Every project gets my full attention, from first prototype to final deploy.</p></div>
-                  <div className="trait"><div className="ic">02 / design</div><h4>I think in people</h4><p>Technical depth means nothing if it doesn&apos;t feel human to use.</p></div>
-                  <div className="trait"><div className="ic">03 / learn</div><h4>I stay curious</h4><p>Robotics, hackathons and competitions keep me learning, always.</p></div>
-                  <div className="trait"><div className="ic">04 / lead</div><h4>I bring people along</h4><p>Led teams, mentored peers, and built community at BU.</p></div>
-                </div>
+          <div className="sec-head">
+            <p className="mono sec-no">§ 02 / About</p>
+            <h2 className="sec-title">A bit about <span className="hot">me.</span></h2>
+          </div>
+          <div className="about-grid">
+            <figure className="about-photo rv-photo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/photo-profile.jpg" alt="Natthanarong Tiangjit (Nine), AI developer in Bangkok, Thailand" loading="lazy" />
+              <figcaption className="mono">Nine, Bangkok</figcaption>
+            </figure>
+            <div className="about-text">
+              <p className="about-lead">
+                I&apos;m a fourth-year AI Engineering student at Bangkok University, studying on a full scholarship.
+              </p>
+              <div className="about-body">
+                <p>I led a robotics lab until May 2026 and won a national AI competition. I work on both hardware and software, and every project makes me want to start the next one.</p>
+                <p>I want the things I build to be useful, and I want them to feel <em>right</em> to use.</p>
               </div>
             </div>
           </div>
+          <ol className="traits">
+            {traits.map(([n, h, p]) => (
+              <li className="trait rv-trait" key={n}>
+                <span className="mono">{n}</span>
+                <h3>{h}</h3>
+                <p>{p}</p>
+              </li>
+            ))}
+          </ol>
         </section>
 
         {/* ============ EXPERTISE ============ */}
-        <section className="block" id="expertise" data-screen-label="Expertise">
-          <span className="ghostword px" style={{ right: "-3%", top: "6%", fontSize: "clamp(6rem,15vw,14rem)" }} data-px-y=".11" data-px-mx="36">
-            STACK
-          </span>
-          <span className="float neon-c px" style={{ left: "5%", top: "26%", fontSize: "64px", "--o": ".4" } as CSSVars} data-px-y=".17">
-            &amp;
-          </span>
-          <div className="wrap">
-            <div className="section-head reveal-up">
-              <div className="chapter-mark"><span className="rn">III</span><span className="rn-line" /></div>
-              <span className="kicker">What I work with</span>
-              <h2 className="section-title">
-                A toolkit built<br />
-                <span className="g">end to end.</span>
-              </h2>
-              <p className="section-desc">
-                From the first line of front-end to a model running in production — I like owning the whole journey.
-              </p>
-            </div>
-            <div className="cap-grid">
-              <div className="cap reveal-up">
-                <div className="num">01 / engineering</div>
-                <h4>Full-Stack Web</h4>
-                <div className="cap-tags"><span>React</span><span>Next.js</span><span>Express</span><span>REST API</span><span>Auth</span><span>CI/CD</span></div>
+        <section className="block inv" id="expertise" data-screen-label="Expertise">
+          <div className="sec-head">
+            <p className="mono sec-no">§ 03 / Stack</p>
+            <h2 className="sec-title">What I <span className="hot">work with.</span></h2>
+            <p className="sec-desc">From the front end to a model running in production. I like owning the whole thing.</p>
+          </div>
+          <p className="mono tag-hint" id="tagHint" aria-live="polite">Hover or tap a tool to see which projects used it.</p>
+          <div className="stack">
+            {stack.map(([n, h, tags]) => (
+              <div className="stack-row rv-stack" key={n}>
+                <span className="mono s-n">{n}</span>
+                <h3>{h}</h3>
+                <p className="s-tags">
+                  {tags.map((t) => (
+                    <span key={t} className="tool" tabIndex={0}>{t}</span>
+                  ))}
+                </p>
               </div>
-              <div className="cap reveal-up" data-delay="1">
-                <div className="num">02 / intelligence</div>
-                <h4>Machine Learning &amp; AI</h4>
-                <div className="cap-tags"><span>Python</span><span>NLP</span><span>LLM &amp; RAG</span><span>Model Optimization</span><span>Data Science</span></div>
-              </div>
-              <div className="cap reveal-up" data-delay="2">
-                <div className="num">03 / vision</div>
-                <h4>Vision &amp; Robotics</h4>
-                <div className="cap-tags"><span>Object Detection</span><span>Image Processing</span><span>Point Cloud</span><span>Robotics Control</span><span>PLC</span></div>
-              </div>
-              <div className="cap reveal-up">
-                <div className="num">04 / systems</div>
-                <h4>Languages &amp; Core</h4>
-                <div className="cap-tags"><span>Python</span><span>C</span><span>Ladder Logic</span><span>Serial Comms</span></div>
-              </div>
-              <div className="cap reveal-up" data-delay="1">
-                <div className="num">05 / infra</div>
-                <h4>Deploy &amp; Ops</h4>
-                <div className="cap-tags"><span>Docker</span><span>GitHub</span><span>GitLab</span><span>Cloud Deploy</span></div>
-              </div>
-              <div className="cap reveal-up" data-delay="2">
-                <div className="num">06 / craft</div>
-                <h4>Design Thinking</h4>
-                <div className="cap-tags"><span>User-Focused</span><span>Prototyping</span><span>Cross-Cultural</span><span>Teamwork</span></div>
-              </div>
-            </div>
-            <div className="creds reveal-up">
-              <div className="cred"><div className="l">Education</div><div className="v"><b>B.Eng</b> — AI Engineering &amp; Data Science<br />Bangkok University · GPAX 3.29</div></div>
-              <div className="cred"><div className="l">Certifications</div><div className="v"><b>Data Scientist</b> Nanodegree<br /><b>AI Innovator</b> by AiAT</div></div>
-              <div className="cred"><div className="l">Partnership</div><div className="v"><b>Central Ayutthaya</b><br />Co-Project · 2024</div></div>
-            </div>
+            ))}
+          </div>
+          <div className="creds">
+            <div><p className="mono l">Education</p><p><b>B.Eng</b>, AI Engineering &amp; Data Science<br />Bangkok University · GPAX 3.29</p></div>
+            <div><p className="mono l">Certifications</p><p><b>Data Scientist</b> Nanodegree<br /><b>AI Innovator</b> by AiAT</p></div>
+            <div><p className="mono l">Partnership</p><p><b>Central Ayutthaya</b><br />Co-Project · 2024</p></div>
           </div>
         </section>
 
         {/* ============ EXPERIENCE ============ */}
         <section className="block" id="experience" data-screen-label="Experience">
-          <span className="ghostword px" style={{ right: "-2%", bottom: "6%", fontSize: "clamp(6rem,15vw,14rem)" }} data-px-y=".12" data-px-mx="36">
-            GROW
-          </span>
-          <span className="float neon-c px" style={{ right: "8%", top: "22%", fontSize: "56px", fontStyle: "italic", "--o": ".4" } as CSSVars} data-px-y=".18">
-            ❦
-          </span>
-          <div className="wrap">
-            <div className="section-head reveal-up">
-              <div className="chapter-mark"><span className="rn">IV</span><span className="rn-line" /></div>
-              <span className="kicker">The journey so far</span>
-              <h2 className="section-title">
-                Every step <span className="g">led here.</span>
-              </h2>
-              <p className="section-desc">
-                From late-night competitions to global collaborations — one chapter at a time.
-              </p>
-            </div>
-            <div className="timeline">
-              <div className="tl-item reveal-up">
-                <div className="tl-date">Mar 2024 — Present</div>
-                <h3>Team Leader</h3>
-                <div className="tl-org">BU ROBOTSTUDIO</div>
-                <ul>
-                  <li>Develop software architecture and AI integration for robotics and automation</li>
-                  <li>Direct cross-functional teams, turning technical concepts into actionable strategies</li>
-                  <li>Grew with the lab: Staff (2023) → Operations Lead (2024) → Head of Operations (2025)</li>
-                </ul>
+          <div className="sec-head">
+            <p className="mono sec-no">§ 04 / Path</p>
+            <h2 className="sec-title">My <span className="hot">path so far.</span></h2>
+            <p className="sec-desc">Roles, awards and study, roughly newest first.</p>
+          </div>
+          <div className="timeline">
+            {path.map((t) => (
+              <div className="tl-item" key={t.title + t.date}>
+                <p className="mono tl-date">{t.date}</p>
+                <div>
+                  <h3>{t.title}</h3>
+                  <p className="mono tl-org">{t.org}</p>
+                  <ul>{t.pts.map((x) => <li key={x}>{x}</li>)}</ul>
+                </div>
               </div>
-              <div className="tl-item reveal-up">
-                <div className="tl-date">October 2025</div>
-                <h3>Outstanding Innovation Award</h3>
-                <div className="tl-org">Super AI Engineer Season 5 · AiAT</div>
-                <ul>
-                  <li>Honored at Thailand&apos;s 5th National AI Exhibition</li>
-                  <li>Delivered customized software focused on scalability, security and usability</li>
-                  <li>Built an enterprise RAG chatbot for real business use</li>
-                </ul>
-              </div>
-              <div className="tl-item reveal-up">
-                <div className="tl-date">Mar 2024 — 2026</div>
-                <h3>Collaborator</h3>
-                <div className="tl-org">Learning Express · Singapore Polytechnic</div>
-                <ul>
-                  <li>Applied engineering and Design Thinking to real community problems</li>
-                  <li>Merged technical analysis with user-focused design</li>
-                  <li>Sharpened English and intercultural skills through teamwork</li>
-                </ul>
-              </div>
-              <div className="tl-item reveal-up">
-                <div className="tl-date">2023 — Present</div>
-                <h3>AI Engineering Student</h3>
-                <div className="tl-org">Bangkok University · GPAX 3.29</div>
-                <ul>
-                  <li>Tech Talent 100% Full Scholarship recipient</li>
-                  <li>B.Eng in AI Engineering &amp; Data Science — third year</li>
-                  <li>Certified Data Scientist (Nanodegree) and AI Innovator by AiAT</li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* ============ CONTACT ============ */}
         <section className="block contact" id="contact" data-screen-label="Contact">
-          <div className="wrap">
-            <div className="contact-inner reveal-up">
-              <div className="chapter-mark" style={{ justifyContent: "center" }}><span className="rn-line" /><span className="rn">V</span><span className="rn-line" /></div>
-              <span className="kicker" style={{ justifyContent: "center" }}>Say hello</span>
-              <h2>
-                Let&apos;s make<br />
-                <span className="g">something good.</span>
-              </h2>
-              <p className="lead">
-                Got an idea worth building? I&apos;d love to hear it. The best projects always start with a simple hello.
-              </p>
-              <div className="contact-actions">
-                <a href="mailto:natthanarong.tian@gmail.com" className="btn btn-primary">
-                  Start a conversation <span className="arrow">↗</span>
-                </a>
-                <a href="tel:+66917853400" className="btn btn-ghost">
-                  +66 91 785 3400
-                </a>
-              </div>
-              <div className="contact-meta">
-                <a className="cmeta" href="mailto:natthanarong.tian@gmail.com">
-                  <div className="l">Email</div>
-                  <div className="v">natthanarong.tian@gmail.com</div>
-                </a>
-                <div className="cmeta">
-                  <div className="l">Location</div>
-                  <div className="v">Bangkok, Thailand · Remote OK</div>
-                </div>
-                <div className="cmeta">
-                  <div className="l">Status</div>
-                  <div className="v">On a Trainee Internship period</div>
-                </div>
-              </div>
-              <div className="socials">
-                <a className="soc" href="https://github.com/nine-codes" target="_blank" rel="noopener">↳ GitHub</a>
-                <a className="soc" href="https://linkedin.com/in/natthanarong" target="_blank" rel="noopener">↳ LinkedIn</a>
-                <a className="soc" href="https://www.instagram.com/n_nine.e" target="_blank" rel="noopener">↳ Instagram</a>
-              </div>
+          <p className="mono sec-no">§ 05 / Contact</p>
+          <a className="mega" href="mailto:natthanarong.tian@gmail.com" aria-label="Email Nine">
+            {"SAY HELLO".split("").map((ch, i) => (
+              <span key={i} style={{ "--c": i } as React.CSSProperties} aria-hidden="true">{ch === " " ? " " : ch}</span>
+            ))}
+            <em aria-hidden="true">↗</em>
+          </a>
+          <p className="contact-lead">Got a project or a question? Send me an email or call.</p>
+          <div className="contact-grid">
+            <button type="button" className="cell copy" id="copyMail" data-copy="natthanarong.tian@gmail.com">
+              <span className="mono l">Email · click to copy</span>
+              <span className="v">natthanarong.tian@gmail.com</span>
+            </button>
+            <a className="cell" href="tel:+66917853400">
+              <span className="mono l">Phone</span>
+              <span className="v">+66 91 785 3400</span>
+            </a>
+            <div className="cell">
+              <span className="mono l">Location</span>
+              <span className="v">Bangkok, Thailand · Remote OK</span>
+              <span className="mono clock" id="bkkClock">Bangkok time</span>
+            </div>
+            <div className="cell">
+              <span className="mono l">Status</span>
+              <span className="v">Currently a trainee intern</span>
             </div>
           </div>
+          <p className="socials mono">
+            <a href="https://github.com/nine-codes" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://linkedin.com/in/natthanarong" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://www.instagram.com/n_nine.e" target="_blank" rel="noopener">Instagram ↗</a>
+          </p>
         </section>
       </main>
 
       {/* ============ FOOTER ============ */}
       <footer>
-        <div className="wrap">
-          <div className="f-left">
-            © 2026 <b>Natthanarong Tiangjit</b> — ณัฏฐณรงค์ เที่ยงจิตต์
-          </div>
-          <div className="langs">
-            <span>Thai <b>Native</b></span>
-            <span>English <b>B2</b></span>
-            <span>GPAX <b>3.29</b></span>
-          </div>
-        </div>
+        <p>© 2026 <b>Natthanarong Tiangjit</b>, ณัฏฐณรงค์ เที่ยงจิตต์</p>
+        <p className="mono">Thai · Native &nbsp;/&nbsp; English · B2 &nbsp;/&nbsp; GPAX · 3.29</p>
       </footer>
 
       <Interactions />
+      <div className="toast mono" id="toast" role="status" />
     </>
   );
 }

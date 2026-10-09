@@ -1,22 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Source_Serif_4 } from "next/font/google";
+import { Archivo, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "./components/JsonLd";
 import AiSearchContent from "./components/AiSearchContent";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source",
+const fragment = Fragment_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: "400",
   display: "swap",
 });
 
@@ -26,17 +24,17 @@ const personNames =
   "Natthanarong Tiangjit, ณัฏฐณรงค์ เที่ยงจิตต์, Nine, ไนน์, Nine Natthanarong, ไนน์ ณัฏฐณรงค์, Natthanarong";
 
 const description =
-  "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — also known as Nine (ไนน์) — is an AI Software Developer in Bangkok, Thailand. Award-winning innovator (Super AI Engineer SS5) specializing in LLM & RAG, Full-Stack Web, and Robotics. Bangkok University, Tech Talent full scholarship.";
+  "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์), is an AI Software Developer in Bangkok, Thailand. Award-winning innovator (Super AI Engineer SS5) specializing in LLM & RAG, Full-Stack Web, and Robotics. Bangkok University, Tech Talent full scholarship.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Nine (Natthanarong) — AI Software Developer | ณัฏฐณรงค์ เที่ยงจิตต์",
-    template: "%s | Nine — Natthanarong Tiangjit",
+      "Nine (Natthanarong) | AI Software Developer | ณัฏฐณรงค์ เที่ยงจิตต์",
+    template: "%s | Nine | Natthanarong Tiangjit",
   },
   description,
-  applicationName: "Nine — Natthanarong Tiangjit Portfolio",
+  applicationName: "Nine | Natthanarong Tiangjit Portfolio",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -94,23 +92,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: "th_TH",
     url: siteUrl,
-    siteName: "Nine — Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์)",
+    siteName: "Nine | Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์)",
     title:
-      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
     description,
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+        alt: "Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
     description,
     images: ["/images/og-image.png"],
   },
@@ -130,8 +128,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ color: "#1c1813" }],
-  colorScheme: "dark",
+  themeColor: [{ color: "#ecebe4" }],
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -143,7 +141,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${fragment.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -61,7 +61,7 @@ export default function JsonLd() {
       name: "AI Software Developer",
       occupationalCategory: "15-1252",
       skills: ["Python", "Machine Learning", "LLM", "RAG", "Full-Stack Development", "Robotics", "PLC", "Computer Vision", "Django", "Next.js", "Docker"],
-      qualifications: ["Bangkok University Student", "Super AI Engineer Season 5 Winner", "BU ROBOTSTUDIO Head of Operations"],
+      qualifications: ["Bangkok University Student", "Super AI Engineer Season 5 Winner", "Former BU ROBOTSTUDIO Head of Operations (until May 2026)"],
     },
     sameAs: [
       "https://github.com/nine-codes",
@@ -140,7 +140,7 @@ export default function JsonLd() {
     dateModified: "2026-06-07",
     mainEntity: { "@id": "https://nine.codes/#person" },
     about: { "@id": "https://nine.codes/#person" },
-    name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — Nine (ไนน์)",
+    name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) / Nine (ไนน์)",
     url: "https://nine.codes",
     inLanguage: ["en", "th"],
   };
@@ -186,7 +186,7 @@ export default function JsonLd() {
         name: "Who is Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์)?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์), is an AI Software Developer from Bangkok, Thailand. He is a third-year AI Engineering student at Bangkok University on a full Tech Talent scholarship. He specializes in LLM Optimizations, Full-Stack Web Development, and Robotics. He won the Outstanding Innovation Award at Super AI Engineer Season 5 and serves as Head of Operations at BU ROBOTSTUDIO.",
+          text: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์), is an AI Software Developer from Bangkok, Thailand. He is a fourth-year AI Engineering student at Bangkok University on a full Tech Talent scholarship. He specializes in LLM Optimizations, Full-Stack Web Development, and Robotics. He won the Outstanding Innovation Award at Super AI Engineer Season 5 and was Head of Operations at BU ROBOTSTUDIO until May 2026.",
         },
       },
       {
@@ -210,7 +210,7 @@ export default function JsonLd() {
         name: "Where does Natthanarong Tiangjit work?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Natthanarong Tiangjit is the Head of Operations at BU ROBOTSTUDIO, a robotics laboratory at Bangkok University. He also worked as CAIO (Chief AI Officer) for RaoChatHub startup after winning Super AI Engineer Season 5. He is currently a student at Bangkok University majoring in AI Engineering and Data Science.",
+          text: "Natthanarong Tiangjit was Head of Operations at BU ROBOTSTUDIO, a robotics laboratory at Bangkok University, until May 2026. He also worked as CAIO (Chief AI Officer) for RaoChatHub startup after winning Super AI Engineer Season 5. He is currently a student at Bangkok University majoring in AI Engineering and Data Science.",
         },
       },
       {
