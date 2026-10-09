@@ -137,7 +137,7 @@ export default function Interactions() {
     }
 
     /* ---------- Reveal on scroll ---------- */
-    const revealEls = document.querySelectorAll(".reveal-up");
+    const revealEls = document.querySelectorAll(".reveal-up, [class*=\"rv-\"]:not(.rv-wipe):not(.rv-photo)");
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((en) => {
@@ -150,7 +150,15 @@ export default function Interactions() {
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     revealEls.forEach((el) => io.observe(el));
-    cleanups.push(() => io.disconnect());
+    /* clip-path reveals start as a sliver, so any visible pixel should trigger them */
+    const io0 = new IntersectionObserver(
+      (entries) => entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add("in"); io0.unobserve(en.target); }
+      }),
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" }
+    );
+    document.querySelectorAll(".rv-wipe, .rv-photo").forEach((el) => io0.observe(el));
+    cleanups.push(() => { io.disconnect(); io0.disconnect(); });
 
     /* ---------- Animated counters ---------- */
     const counters = document.querySelectorAll<HTMLElement>("[data-count]");
@@ -178,19 +186,51 @@ export default function Interactions() {
     counters.forEach((el) => cio.observe(el));
     cleanups.push(() => cio.disconnect());
 
-    /* ---------- Project filters ---------- */
+    /* ---------- Project filters (FLIP: cards glide to their new slots) ---------- */
     const filters = document.querySelectorAll<HTMLElement>(".filter");
-    const cards = document.querySelectorAll<HTMLElement>("#grid .card");
+    const cards = [...document.querySelectorAll<HTMLElement>("#grid .card")];
+    const countEl = document.getElementById("filterCount");
+    const catCount = (f: string) =>
+      cards.filter((c) => f === "all" || (c.dataset.cat || "").split(" ").includes(f)).length;
+    filters.forEach((btn) => {
+      const f = btn.dataset.f || "all";
+      const n = document.createElement("span");
+      n.className = "n";
+      n.textContent = String(catCount(f));
+      btn.appendChild(n);
+    });
+    const setCount = (f: string) => {
+      if (countEl) countEl.textContent = `Showing ${catCount(f)} of ${cards.length} projects` + (f === "all" ? "" : ` · ${f}`);
+    };
+    setCount("all");
     const filterHandlers: Array<[HTMLElement, () => void]> = [];
     filters.forEach((btn) => {
       const handler = () => {
+        const f = btn.dataset.f || "all";
         filters.forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        const f = btn.dataset.f;
+        const first = new Map(cards.filter((c) => !c.classList.contains("hide")).map((c) => [c, c.getBoundingClientRect()]));
         cards.forEach((card) => {
-          const cats = (card.dataset.cat || "").split(" ");
-          const show = f === "all" || (f !== undefined && cats.includes(f));
+          const show = f === "all" || (card.dataset.cat || "").split(" ").includes(f);
           card.classList.toggle("hide", !show);
+          if (show) card.classList.add("in");
+        });
+        setCount(f);
+        if (reduce) return;
+        cards.forEach((card) => {
+          if (card.classList.contains("hide")) return;
+          const b = card.getBoundingClientRect();
+          const a = first.get(card);
+          if (a) {
+            const dx = a.left - b.left, dy = a.top - b.top;
+            if (dx || dy) card.animate(
+              [{ transform: `translate(${dx}px,${dy}px)` }, { transform: "none" }],
+              { duration: 650, easing: "cubic-bezier(0.22,1,0.36,1)" });
+          } else {
+            card.animate(
+              [{ opacity: 0, transform: "scale(.92) translateY(16px)" }, { opacity: 1, transform: "none" }],
+              { duration: 600, easing: "cubic-bezier(0.22,1,0.36,1)" });
+          }
         });
       };
       btn.addEventListener("click", handler);
@@ -199,6 +239,103 @@ export default function Interactions() {
     cleanups.push(() =>
       filterHandlers.forEach(([btn, h]) => btn.removeEventListener("click", h))
     );
+
+    /* ---------- Stack chips: stagger index + cross-highlight projects ---------- */
+    document.querySelectorAll(".cap").forEach((cap) =>
+      cap.querySelectorAll<HTMLElement>(".cap-tags span").forEach((s, i) => s.style.setProperty("--i", String(i))));
+    const hint = document.getElementById("tagHint");
+    const hintDefault = hint?.textContent || "";
+    const stop = (s: string) => s.toLowerCase().replace(/&amp;/g, "&");
+    const aliases: Record<string, string[]> = { "llm & rag": ["rag", "llm"], "rest api": ["rest"], "ci/cd": ["ci/cd"], "user-focused": ["user"] };
+    const chipOn = (chip: HTMLElement) => {
+      const key = stop(chip.textContent || "");
+      const terms = aliases[key] || [key];
+      const hits = cards.filter((c) => terms.some((t) => stop(c.textContent || "").includes(t)));
+      cards.forEach((c) => { c.classList.toggle("lit", hits.includes(c)); c.classList.toggle("dim", hits.length > 0 && !hits.includes(c)); });
+      chip.classList.add("sel");
+      if (hint) {
+        hint.innerHTML = hits.length
+          ? `<b>${chip.textContent}</b> — used in ${hits.length} project${hits.length > 1 ? "s" : ""}: ` + hits.map((c) => c.querySelector("h3")?.textContent).join(" · ")
+          : `<b>${chip.textContent}</b> — part of the daily toolkit, not tied to a single showcase.`;
+      }
+    };
+    const chipOff = (chip: HTMLElement) => {
+      chip.classList.remove("sel");
+      cards.forEach((c) => c.classList.remove("lit", "dim"));
+      if (hint) hint.textContent = hintDefault;
+    };
+    document.querySelectorAll<HTMLElement>(".cap-tags span").forEach((chip) => {
+      const on = () => chipOn(chip), off = () => chipOff(chip);
+      chip.addEventListener("mouseenter", on); chip.addEventListener("mouseleave", off);
+      chip.addEventListener("click", on);
+      cleanups.push(() => { chip.removeEventListener("mouseenter", on); chip.removeEventListener("mouseleave", off); chip.removeEventListener("click", on); });
+    });
+
+    /* ---------- About: reading-scrub — the lead lights word by word ---------- */
+    const lead = document.querySelector<HTMLElement>(".about-lead");
+    const words: HTMLElement[] = [];
+    if (lead && !reduce) {
+      const walk = (node: Node) => {
+        [...node.childNodes].forEach((n) => {
+          if (n.nodeType === 3) {
+            const frag = document.createDocumentFragment();
+            (n.textContent || "").split(/(\s+)/).forEach((t) => {
+              if (!t) return;
+              if (/^\s+$/.test(t)) frag.append(t);
+              else { const s = document.createElement("span"); s.className = "w"; s.textContent = t; words.push(s); frag.append(s); }
+            });
+            n.parentNode?.replaceChild(frag, n);
+          } else walk(n);
+        });
+      };
+      walk(lead);
+      lead.classList.add("scrub");
+    }
+
+    /* ---------- Experience: thread draws with scroll ---------- */
+    const timeline = document.querySelector<HTMLElement>(".timeline");
+    const tlItems = [...document.querySelectorAll<HTMLElement>(".tl-item")];
+    const onScrub = () => {
+      const vh = window.innerHeight;
+      if (lead && words.length) {
+        const r = lead.getBoundingClientRect();
+        const p = Math.min(Math.max((vh * 0.82 - r.top) / (r.height + vh * 0.25), 0), 1);
+        const upto = p * words.length * 1.15;
+        words.forEach((w, i) => w.classList.toggle("on", i < upto));
+      }
+      if (timeline) {
+        const r = timeline.getBoundingClientRect();
+        const line = vh * 0.6;
+        const p = Math.min(Math.max((line - r.top) / r.height, 0), 1);
+        timeline.style.setProperty("--tl", p.toFixed(3));
+        tlItems.forEach((it) => it.classList.toggle("on", reduce || it.getBoundingClientRect().top < line));
+      }
+    };
+    window.addEventListener("scroll", onScrub, { passive: true });
+    window.addEventListener("resize", onScrub, { passive: true });
+    onScrub();
+    cleanups.push(() => { window.removeEventListener("scroll", onScrub); window.removeEventListener("resize", onScrub); });
+
+    /* ---------- Contact: copy email + live Bangkok clock ---------- */
+    const toast = document.getElementById("toast");
+    const copyBtn = document.getElementById("copyMail");
+    const copyH = async () => {
+      try { await navigator.clipboard.writeText(copyBtn?.dataset.copy || ""); if (toast) toast.textContent = "Email copied — talk soon ✦"; }
+      catch { window.location.href = "mailto:" + (copyBtn?.dataset.copy || ""); return; }
+      toast?.classList.add("show");
+      setTimeout(() => toast?.classList.remove("show"), 2200);
+    };
+    copyBtn?.addEventListener("click", copyH);
+    const clock = document.getElementById("bkkClock");
+    const tickClock = () => {
+      if (!clock) return;
+      const t = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Bangkok", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date());
+      const h = parseInt(t, 10);
+      clock.textContent = `${t} local · ${h >= 9 && h < 18 ? "likely at my desk" : h >= 22 || h < 6 ? "probably asleep" : "off the clock"}`;
+    };
+    tickClock();
+    const clockT = setInterval(tickClock, 30000);
+    cleanups.push(() => { copyBtn?.removeEventListener("click", copyH); clearInterval(clockT); });
 
     /* ---------- Active nav link + chapter rail by section ---------- */
     const sections = document.querySelectorAll("main section[id], header[id]");

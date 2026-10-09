@@ -231,8 +231,10 @@ export default function Home() {
               <button className="filter" data-f="award">Awards</button>
             </div>
 
+            <p className="filter-count" id="filterCount" aria-live="polite" />
+
             <div className="work-grid" id="grid">
-              <article className="card feature span-7 reveal-up" data-cat="award ai">
+              <article className="card feature span-7 rv-wipe" data-cat="award ai">
                 <div className="card-media">
                   <img src="/images/projects/team_photo.jpeg" alt="Super AI Engineer SS5 — Outstanding Innovation Award won by Natthanarong (Nine)" loading="lazy" />
                 </div>
@@ -245,7 +247,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card feature span-5 reveal-up" data-cat="robotics" data-delay="1">
+              <article className="card feature span-5 rv-wipe" data-cat="robotics" data-delay="1">
                 <div className="card-media">
                   <img src="/images/projects/453008415_17959542005792478_5114396889725007570_n.jpg" alt="BU ROBOTSTUDIO robotics lab led by Natthanarong Tiangjit" loading="lazy" />
                 </div>
@@ -262,7 +264,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-4 reveal-up" data-cat="robotics">
+              <article className="card span-4 rv-wipe" data-cat="robotics">
                 <div className="card-media">
                   <img src="/images/projects/IMG_2091.JPG" alt="ABB Automation robotics training — top 8 finalist" loading="lazy" />
                 </div>
@@ -274,7 +276,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-4 reveal-up" data-cat="robotics ai" data-delay="1">
+              <article className="card span-4 rv-wipe" data-cat="robotics ai" data-delay="1">
                 <div className="card-media">
                   <img src="/images/projects/plc2024-team.PNG" alt="AI Smart Parking — Mitsubishi PLC Competition 2024 finalist" loading="lazy" />
                 </div>
@@ -286,7 +288,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-4 reveal-up" data-cat="ai" data-delay="2">
+              <article className="card span-4 rv-wipe" data-cat="ai" data-delay="2">
                 <div className="card-media">
                   <img src="/images/projects/469105467_17976154043792478_347761597580673379_n.jpg" alt="HyperGas AI safety-training system" loading="lazy" />
                 </div>
@@ -298,7 +300,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-6 reveal-up" data-cat="web ai">
+              <article className="card span-6 rv-wipe" data-cat="web ai">
                 <div className="card-media">
                   <img src="/images/projects/functions-codes-web.png" alt="functions.codes — free ad-free online tools by Nine" loading="lazy" />
                 </div>
@@ -311,7 +313,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-6 reveal-up" data-cat="ai web" data-delay="1">
+              <article className="card span-6 rv-wipe" data-cat="ai web" data-delay="1">
                 <div className="card-media">
                   <img src="/images/projects/webpage.png" alt="Gender Classification AI — NLP web app" loading="lazy" />
                 </div>
@@ -325,7 +327,7 @@ export default function Home() {
               </article>
 
               {/* secondary */}
-              <article className="card span-4 reveal-up" data-cat="award robotics">
+              <article className="card span-4 rv-wipe" data-cat="award robotics">
                 <div className="card-media">
                   <img src="/images/projects/1761292091147.jpeg" alt="LearnLab — AI/AR handicraft marketplace, two-time finalist" loading="lazy" />
                 </div>
@@ -336,7 +338,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-4 reveal-up" data-cat="ai web" data-delay="1">
+              <article className="card span-4 rv-wipe" data-cat="ai web" data-delay="1">
                 <div className="card-media">
                   <img src="/images/projects/1761292376519.jpeg" alt="Learning Express — Singapore Polytechnic collaboration" loading="lazy" />
                 </div>
@@ -347,7 +349,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card span-4 reveal-up" data-cat="ai robotics" data-delay="2">
+              <article className="card span-4 rv-wipe" data-cat="ai robotics" data-delay="2">
                 <div className="card-media">
                   <img src="/images/projects/1763286567350.jpeg" alt="TESA Top Gun Rally — defense-innovation sprint" loading="lazy" />
                 </div>
@@ -358,7 +360,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card nomedia span-6 reveal-up" data-cat="ai robotics">
+              <article className="card nomedia span-6 rv-wipe" data-cat="ai robotics">
                 <div className="card-field"><span className="dotmesh" /><span className="glyph">2.5D</span></div>
                 <div className="card-body">
                   <span className="card-tag">Research · Computer Vision</span>
@@ -369,7 +371,7 @@ export default function Home() {
                 </div>
               </article>
 
-              <article className="card nomedia span-6 reveal-up" data-cat="web" data-delay="1">
+              <article className="card nomedia span-6 rv-wipe" data-cat="web" data-delay="1">
                 <div className="card-field"><span className="dotmesh" /><span className="glyph">10+</span></div>
                 <div className="card-body">
                   <span className="card-tag">Full-Stack · Ongoing</span>
@@ -406,7 +408,7 @@ export default function Home() {
               </h2>
             </div>
             <div className="about-grid">
-              <div className="about-photo reveal-up">
+              <div className="about-photo rv-photo">
                 <div className="plate" id="aboutPlate">
                   <img src="/images/photo-profile.jpg" alt="Natthanarong Tiangjit (Nine) — AI developer in Bangkok, Thailand" loading="lazy" />
                   <span className="frame-tag">Bangkok, TH · est. 2024</span>
@@ -421,10 +423,10 @@ export default function Home() {
                   <p>What I care about is simple: build things that genuinely matter — and make them work beautifully <em>and</em> feel right.</p>
                 </div>
                 <div className="traits">
-                  <div className="trait"><div className="ic">01 / build</div><h4>I sweat the details</h4><p>Every project gets my full attention, from first prototype to final deploy.</p></div>
-                  <div className="trait"><div className="ic">02 / design</div><h4>I think in people</h4><p>Technical depth means nothing if it doesn&apos;t feel human to use.</p></div>
-                  <div className="trait"><div className="ic">03 / learn</div><h4>I stay curious</h4><p>Robotics, hackathons and competitions keep me learning, always.</p></div>
-                  <div className="trait"><div className="ic">04 / lead</div><h4>I bring people along</h4><p>Led teams, mentored peers, and built community at BU.</p></div>
+                  <div className="trait rv-side"><div className="ic">01 / build</div><h4>I sweat the details</h4><p>Every project gets my full attention, from first prototype to final deploy.</p></div>
+                  <div className="trait rv-side"><div className="ic">02 / design</div><h4>I think in people</h4><p>Technical depth means nothing if it doesn&apos;t feel human to use.</p></div>
+                  <div className="trait rv-side"><div className="ic">03 / learn</div><h4>I stay curious</h4><p>Robotics, hackathons and competitions keep me learning, always.</p></div>
+                  <div className="trait rv-side"><div className="ic">04 / lead</div><h4>I bring people along</h4><p>Led teams, mentored peers, and built community at BU.</p></div>
                 </div>
               </div>
             </div>
@@ -451,33 +453,34 @@ export default function Home() {
                 From the first line of front-end to a model running in production — I like owning the whole journey.
               </p>
             </div>
+            <p className="tag-hint" id="tagHint" aria-live="polite">Hover or tap any tool — see where it has shipped.</p>
             <div className="cap-grid">
-              <div className="cap reveal-up">
+              <div className="cap rv-pop">
                 <div className="num">01 / engineering</div>
                 <h4>Full-Stack Web</h4>
                 <div className="cap-tags"><span>React</span><span>Next.js</span><span>Express</span><span>REST API</span><span>Auth</span><span>CI/CD</span></div>
               </div>
-              <div className="cap reveal-up" data-delay="1">
+              <div className="cap rv-pop" data-delay="1">
                 <div className="num">02 / intelligence</div>
                 <h4>Machine Learning &amp; AI</h4>
                 <div className="cap-tags"><span>Python</span><span>NLP</span><span>LLM &amp; RAG</span><span>Model Optimization</span><span>Data Science</span></div>
               </div>
-              <div className="cap reveal-up" data-delay="2">
+              <div className="cap rv-pop" data-delay="2">
                 <div className="num">03 / vision</div>
                 <h4>Vision &amp; Robotics</h4>
                 <div className="cap-tags"><span>Object Detection</span><span>Image Processing</span><span>Point Cloud</span><span>Robotics Control</span><span>PLC</span></div>
               </div>
-              <div className="cap reveal-up">
+              <div className="cap rv-pop">
                 <div className="num">04 / systems</div>
                 <h4>Languages &amp; Core</h4>
                 <div className="cap-tags"><span>Python</span><span>C</span><span>Ladder Logic</span><span>Serial Comms</span></div>
               </div>
-              <div className="cap reveal-up" data-delay="1">
+              <div className="cap rv-pop" data-delay="1">
                 <div className="num">05 / infra</div>
                 <h4>Deploy &amp; Ops</h4>
                 <div className="cap-tags"><span>Docker</span><span>GitHub</span><span>GitLab</span><span>Cloud Deploy</span></div>
               </div>
-              <div className="cap reveal-up" data-delay="2">
+              <div className="cap rv-pop" data-delay="2">
                 <div className="num">06 / craft</div>
                 <h4>Design Thinking</h4>
                 <div className="cap-tags"><span>User-Focused</span><span>Prototyping</span><span>Cross-Cultural</span><span>Teamwork</span></div>
@@ -511,7 +514,7 @@ export default function Home() {
               </p>
             </div>
             <div className="timeline">
-              <div className="tl-item reveal-up">
+              <div className="tl-item">
                 <div className="tl-date">Mar 2024 — Present</div>
                 <h3>Team Leader</h3>
                 <div className="tl-org">BU ROBOTSTUDIO</div>
@@ -521,7 +524,7 @@ export default function Home() {
                   <li>Grew with the lab: Staff (2023) → Operations Lead (2024) → Head of Operations (2025)</li>
                 </ul>
               </div>
-              <div className="tl-item reveal-up">
+              <div className="tl-item">
                 <div className="tl-date">October 2025</div>
                 <h3>Outstanding Innovation Award</h3>
                 <div className="tl-org">Super AI Engineer Season 5 · AiAT</div>
@@ -531,7 +534,7 @@ export default function Home() {
                   <li>Built an enterprise RAG chatbot for real business use</li>
                 </ul>
               </div>
-              <div className="tl-item reveal-up">
+              <div className="tl-item">
                 <div className="tl-date">Mar 2024 — 2026</div>
                 <h3>Collaborator</h3>
                 <div className="tl-org">Learning Express · Singapore Polytechnic</div>
@@ -541,7 +544,7 @@ export default function Home() {
                   <li>Sharpened English and intercultural skills through teamwork</li>
                 </ul>
               </div>
-              <div className="tl-item reveal-up">
+              <div className="tl-item">
                 <div className="tl-date">2023 — Present</div>
                 <h3>AI Engineering Student</h3>
                 <div className="tl-org">Bangkok University · GPAX 3.29</div>
@@ -558,7 +561,7 @@ export default function Home() {
         {/* ============ CONTACT ============ */}
         <section className="block contact" id="contact" data-screen-label="Contact">
           <div className="wrap">
-            <div className="contact-inner reveal-up">
+            <div className="contact-inner rv-contact">
               <div className="chapter-mark" style={{ justifyContent: "center" }}><span className="rn-line" /><span className="rn">V</span><span className="rn-line" /></div>
               <span className="kicker" style={{ justifyContent: "center" }}>Say hello</span>
               <h2>
@@ -577,13 +580,13 @@ export default function Home() {
                 </a>
               </div>
               <div className="contact-meta">
-                <a className="cmeta" href="mailto:natthanarong.tian@gmail.com">
-                  <div className="l">Email</div>
+                <button type="button" className="cmeta copy" id="copyMail" data-copy="natthanarong.tian@gmail.com">
+                  <div className="l">Email · click to copy</div>
                   <div className="v">natthanarong.tian@gmail.com</div>
-                </a>
+                </button>
                 <div className="cmeta">
                   <div className="l">Location</div>
-                  <div className="v">Bangkok, Thailand · Remote OK</div>
+                  <div className="v">Bangkok, Thailand · Remote OK<br /><span className="clock" id="bkkClock">— local time</span></div>
                 </div>
                 <div className="cmeta">
                   <div className="l">Status</div>
@@ -615,6 +618,7 @@ export default function Home() {
       </footer>
 
       <Interactions />
+      <div className="toast" id="toast" role="status" />
     </>
   );
 }
