@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     title: "BU ROBOTSTUDIO",
     tag: "Leadership",
-    role: "Head of Operations",
+    role: "Head of Operations, until May 2026",
     cats: "robotics",
     img: "/images/projects/453008415_17959542005792478_5114396889725007570_n.jpg",
     alt: "BU ROBOTSTUDIO robotics lab led by Natthanarong Tiangjit",
@@ -147,13 +147,13 @@ const traits: [string, string, string][] = [
 
 const path: { date: string; title: string; org: string; pts: string[] }[] = [
   {
-    date: "Mar 2024 to Present",
+    date: "Mar 2024 to May 2026",
     title: "Team Leader",
     org: "BU ROBOTSTUDIO",
     pts: [
-      "Design the software architecture and AI integration for robotics and automation projects",
-      "Lead cross-functional teams and turn technical ideas into plans people can act on",
-      "Moved up with the lab: Staff in 2023, Operations Lead in 2024, Head of Operations in 2025",
+      "Designed the software architecture and AI integration for robotics and automation projects",
+      "Led cross-functional teams and turned technical ideas into plans people could act on",
+      "Moved up with the lab: Staff in 2023, Operations Lead in 2024, Head of Operations in 2025, and finished my term in May 2026",
     ],
   },
   {
@@ -182,7 +182,7 @@ const path: { date: string; title: string; org: string; pts: string[] }[] = [
     org: "Bangkok University · GPAX 3.29",
     pts: [
       "Tech Talent 100% Full Scholarship recipient",
-      "B.Eng in AI Engineering & Data Science, third year",
+      "B.Eng in AI Engineering & Data Science, fourth year",
       "Certified Data Scientist (Nanodegree) and AI Innovator by AiAT",
     ],
   },
@@ -224,7 +224,7 @@ export default function Home() {
             <div>
               <p className="hero-tag">I make AI <em>do real work.</em></p>
               <p className="hero-sub">
-                I&apos;m a third-year AI engineering student in Bangkok. I build <b>chatbots, vision systems and websites</b>, and I like seeing real people use them.
+                I&apos;m a fourth-year AI engineering student in Bangkok. I build <b>chatbots, vision systems and websites</b>, and I like seeing real people use them.
               </p>
               <div className="hero-actions">
                 <a href="#work" className="btn btn-hot">See the work ↘</a>
@@ -236,7 +236,7 @@ export default function Home() {
               <div><dt>Base</dt><dd>Bangkok, Thailand</dd></div>
               <div><dt>Now</dt><dd>Trainee intern</dd></div>
               <div><dt>Won</dt><dd>Outstanding Innovation Award, Super AI SS5</dd></div>
-              <div><dt>Lead</dt><dd>Head of Operations, BU ROBOTSTUDIO</dd></div>
+              <div><dt>Led</dt><dd>BU ROBOTSTUDIO, until May 2026</dd></div>
               <div><dt>Funded</dt><dd>Tech Talent 100% Scholarship</dd></div>
             </dl>
           </div>
@@ -334,10 +334,10 @@ export default function Home() {
             </figure>
             <div className="about-text">
               <p className="about-lead">
-                I&apos;m a third-year AI Engineering student at Bangkok University, studying on a full scholarship.
+                I&apos;m a fourth-year AI Engineering student at Bangkok University, studying on a full scholarship.
               </p>
               <div className="about-body">
-                <p>I have led a robotics lab and won a national AI competition. I work on both hardware and software, and every project makes me want to start the next one.</p>
+                <p>I led a robotics lab until May 2026 and won a national AI competition. I work on both hardware and software, and every project makes me want to start the next one.</p>
                 <p>I want the things I build to be useful, and I want them to feel <em>right</em> to use.</p>
               </div>
             </div>

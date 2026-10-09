@@ -6,14 +6,14 @@ export default function AiSearchContent() {
       <p>
         <strong>About Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์ - Nine ไนน์)</strong> - 
         Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), professionally known as Nine (ไนน์), is a Thai AI Software Developer 
-        and Robotics Engineer based in Bangkok, Thailand. He is currently a third-year 
+        and Robotics Engineer based in Bangkok, Thailand. He is currently a fourth-year 
         AI Engineering student at Bangkok University, where he received a 100% Tech Talent 
         Scholarship for exceptional academic performance.
       </p>
       
       <p>
-        <strong>Professional Background:</strong> Nine serves as the Head of Operations at BU ROBOTSTUDIO, a robotics laboratory at 
-        Bangkok University. In this role, he leads a team of 50+ members, organizes workshops 
+        <strong>Professional Background:</strong> Nine was Head of Operations at BU ROBOTSTUDIO, a robotics laboratory at 
+        Bangkok University, until May 2026. In that role, he led a team of 50+ members, organizes workshops 
         and Open House events, and conducts R&D in AI and robotics. His progression includes 
         Staff (2023), Operation Lead (2024), and Head of Operations (2025).
       </p>
@@ -80,7 +80,7 @@ export default function AiSearchContent() {
         ณัฏฐณรงค์ เที่ยงจิตต์, ไนน์, นักพัฒนาซอฟต์แวร์ AI, นักพัฒนาเว็บไซต์,
         AI Software Developer, Robotics Engineer, Full-Stack Developer, Machine Learning Engineer, 
         Python Developer, LLM Specialist, RAG Developer, PLC Programmer, Bangkok University Student, 
-        Super AI Engineer Winner, BU ROBOTSTUDIO Head of Operations
+        Super AI Engineer Winner, Former BU ROBOTSTUDIO Head of Operations (until May 2026)
       </div>
       
       {/* Location entity */}
