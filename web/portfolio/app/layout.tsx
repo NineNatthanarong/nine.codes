@@ -1,27 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Archivo, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "./components/JsonLd";
 import AiSearchContent from "./components/AiSearchContent";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-const instrument = Instrument_Sans({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
+const fragment = Fragment_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "400",
   display: "swap",
 });
 
@@ -135,7 +128,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ color: "#f1f3f8" }],
+  themeColor: [{ color: "#ecebe4" }],
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -148,7 +141,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${instrument.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${archivo.variable} ${fragment.variable}`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
