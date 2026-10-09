@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * nine.codes — interactions ("Spec Sheet" edition)
+ * nine.codes, interactions ("Spec Sheet" edition)
  * Hero letters breathe on Archivo's width axis and bend toward the cursor.
  * Everything else moves differently per section: row-index accordion with
  * FLIP filtering, word-scrub intro, tool cross-referencing, drawing thread.
@@ -126,7 +126,7 @@ export default function Interactions() {
       b.appendChild(n);
     });
     const setCount = (f: string) => {
-      if (countEl) countEl.textContent = `${rows.filter((r) => inCat(r, f)).length} / ${rows.length} shown` + (f === "all" ? "" : ` — ${f}`);
+      if (countEl) countEl.textContent = `${rows.filter((r) => inCat(r, f)).length} / ${rows.length} shown` + (f === "all" ? "" : `: ${f}`);
     };
     setCount("all");
     filters.forEach((btn) => {
@@ -166,8 +166,8 @@ export default function Interactions() {
         const b = document.createElement("b");
         b.textContent = chip.textContent || "";
         hint.append(b, hits.length
-          ? ` — used in ${hits.length} project${hits.length > 1 ? "s" : ""}: ` + hits.map((r) => r.querySelector(".r-t")?.textContent).join(" / ")
-          : " — part of the daily toolkit, not tied to a single showcase.");
+          ? ` is used in ${hits.length} project${hits.length > 1 ? "s" : ""}: ` + hits.map((r) => r.querySelector(".r-t")?.textContent).join(" / ")
+          : " is part of my daily toolkit, not tied to one project.");
       }
     };
     const toolOff = (chip: HTMLElement) => {

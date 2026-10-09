@@ -24,17 +24,17 @@ const personNames =
   "Natthanarong Tiangjit, ณัฏฐณรงค์ เที่ยงจิตต์, Nine, ไนน์, Nine Natthanarong, ไนน์ ณัฏฐณรงค์, Natthanarong";
 
 const description =
-  "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — also known as Nine (ไนน์) — is an AI Software Developer in Bangkok, Thailand. Award-winning innovator (Super AI Engineer SS5) specializing in LLM & RAG, Full-Stack Web, and Robotics. Bangkok University, Tech Talent full scholarship.";
+  "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์), also known as Nine (ไนน์), is an AI Software Developer in Bangkok, Thailand. Award-winning innovator (Super AI Engineer SS5) specializing in LLM & RAG, Full-Stack Web, and Robotics. Bangkok University, Tech Talent full scholarship.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Nine (Natthanarong) — AI Software Developer | ณัฏฐณรงค์ เที่ยงจิตต์",
-    template: "%s | Nine — Natthanarong Tiangjit",
+      "Nine (Natthanarong) | AI Software Developer | ณัฏฐณรงค์ เที่ยงจิตต์",
+    template: "%s | Nine | Natthanarong Tiangjit",
   },
   description,
-  applicationName: "Nine — Natthanarong Tiangjit Portfolio",
+  applicationName: "Nine | Natthanarong Tiangjit Portfolio",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -92,23 +92,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     alternateLocale: "th_TH",
     url: siteUrl,
-    siteName: "Nine — Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์)",
+    siteName: "Nine | Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์)",
     title:
-      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
     description,
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+        alt: "Natthanarong Tiangjit (Nine / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) — AI Software Developer",
+      "Nine (Natthanarong Tiangjit / ณัฏฐณรงค์ เที่ยงจิตต์) | AI Software Developer",
     description,
     images: ["/images/og-image.png"],
   },

@@ -140,7 +140,7 @@ export default function JsonLd() {
     dateModified: "2026-06-07",
     mainEntity: { "@id": "https://nine.codes/#person" },
     about: { "@id": "https://nine.codes/#person" },
-    name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) — Nine (ไนน์)",
+    name: "Natthanarong Tiangjit (ณัฏฐณรงค์ เที่ยงจิตต์) / Nine (ไนน์)",
     url: "https://nine.codes",
     inLanguage: ["en", "th"],
   };

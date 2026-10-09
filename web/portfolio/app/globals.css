@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   nine.codes — "Spec Sheet"
+   nine.codes "Spec Sheet"
    Bone paper · black ink · one vermilion. Hard 2px rules, zero radius,
    zero shadow, zero gradient. Poster-scale type on Archivo's width axis.
    ============================================================ */
@@ -306,7 +306,7 @@ footer b { font-weight: 700; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 /* ============================================================
-   MOTION — a different move for each part (initial states only when
+   MOTION: a different move for each part (initial states only when
    motion is allowed; JS adds .in / .on / .open)
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
